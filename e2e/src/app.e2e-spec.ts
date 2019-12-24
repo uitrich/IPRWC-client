@@ -10,7 +10,7 @@ describe('workspace-project App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('iprwc-client app is running!');
+    expect(page.getTitleText()).toEqual('IPRWC-client2 app is running!');
   });
 
   afterEach(async () => {

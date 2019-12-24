@@ -1,9 +1,13 @@
 import { TestBed, async } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        RouterTestingModule
+      ],
       declarations: [
         AppComponent
       ],
@@ -16,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'iprwc-client'`, () => {
+  it(`should have as title 'IPRWC-client2'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('iprwc-client');
+    expect(app.title).toEqual('IPRWC-client2');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('iprwc-client app is running!');
+    expect(compiled.querySelector('.content span').textContent).toContain('IPRWC-client2 app is running!');
   });
 });

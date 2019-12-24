@@ -1,0 +1,18 @@
+links > li :nth-child(1){
+  padding-left: 2.5vw;
+}
+links > li:not(:nth-child(1)){
+  padding-left: 35vw;
+}
+nav li a {
+  width: 200px
+}
+links {
+  justify-content: center;
+}
+mdb-navbar {
+  height: fit-content;
+}
+div a {
+  justify-content: center;
+}

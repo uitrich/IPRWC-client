@@ -3,9 +3,13 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "iprwc-client": {
+    "IPRWC-client2": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -13,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/iprwc-client",
+            "outputPath": "dist/IPRWC-client2",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -24,9 +28,18 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss",
+              "node_modules/@fortawesome/fontawesome-free/scss/solid.scss",
+              "node_modules/@fortawesome/fontawesome-free/scss/regular.scss",
+              "node_modules/@fortawesome/fontawesome-free/scss/brands.scss",
+              "node_modules/angular-bootstrap-md/assets/scss/bootstrap/bootstrap.scss",
+              "node_modules/angular-bootstrap-md/assets/scss/mdb.scss",
+              "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/chart.js/dist/Chart.js",
+              "node_modules/hammerjs/hammer.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -63,18 +76,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "iprwc-client:build"
+            "browserTarget": "IPRWC-client2:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "iprwc-client:build:production"
+              "browserTarget": "IPRWC-client2:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "iprwc-client:build"
+            "browserTarget": "IPRWC-client2:build"
           }
         },
         "test": {
@@ -89,7 +102,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": []
           }
@@ -111,15 +124,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "iprwc-client:serve"
+            "devServerTarget": "IPRWC-client2:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "iprwc-client:serve:production"
+              "devServerTarget": "IPRWC-client2:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "iprwc-client"
+  "defaultProject": "IPRWC-client2"
 }

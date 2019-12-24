@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:800&display=swap');
+img {
+  width: fit-content;
+  height: fit-content;
+}
+.card {
+  font-family: 'Poppins', sans-serif;
+  color: #393c3d;
+  border-radius: 0;
+  background-color: #c1d7e2;
+}
+mdb-card-header {
+  background-color: #77c5d8;
+}
+mdb-card-footer {
+  background-color: #c1d7e2;
+}
+button.green {
+  border-radius: 0;
+}

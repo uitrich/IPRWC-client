@@ -1,0 +1,10 @@
+<h4>{{search}}</h4>
+<div class="divider-new"></div>
+<div *ngFor="let p of products" class="container">
+  <div class="row">
+    <div class="col-md-4 mb-4"><app-product-view *ngIf="p[1] != undefined && p[1] != null" [product]="p[0]"></app-product-view></div>
+    <div class="col-md-4 mb-4"><app-product-view *ngIf="p[1] != undefined && p[1] != null" [product]="p[1]"></app-product-view></div>
+    <div class="col-md-4 mb-4"><app-product-view *ngIf="p[1] != undefined && p[1] != null" [product]="p[2]"></app-product-view></div>
+  </div>
+</div>
+<app-pagination length="{{length}}" (messageEvent)="receiveMessage($event)"></app-pagination>

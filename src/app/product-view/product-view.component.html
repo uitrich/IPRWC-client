@@ -1,0 +1,17 @@
+<div>
+  <mdb-card>
+    <mdb-card-header>
+      <mdb-card-title class="flex-center">{{this.product.category.name}}</mdb-card-title>
+    </mdb-card-header>
+    <mdb-card-img src="{{image}}" alt="Card image cap"></mdb-card-img>
+    <mdb-card-body>
+      <mdb-card-title>
+        <h4>{{truncate(product.name)}}</h4>
+      </mdb-card-title>
+      <mdb-card-text>{{product.company.name}} | {{product.body_location.name}}</mdb-card-text>
+      <hr>
+      <mdb-card-text>${{product.price.toFixed(2)}}</mdb-card-text>
+    </mdb-card-body>
+    <mdb-card-footer > <button class="btn green"><i class="fas fa-shopping-cart"></i> Add to shopping cart</button></mdb-card-footer>
+  </mdb-card>
+</div>
