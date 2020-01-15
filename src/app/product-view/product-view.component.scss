@@ -1,7 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:800&display=swap');
 img {
-  width: fit-content;
-  height: fit-content;
+  width: 100px;
+  height: 100px;
+  background-color: white;
+  border: 0;
+  margin-left: 4vw;
 }
 .card {
   font-family: 'Poppins', sans-serif;
@@ -10,7 +13,7 @@ img {
   background-color: #c1d7e2;
 }
 mdb-card-header {
-  background-color: #77c5d8;
+  background-color: white;
 }
 mdb-card-footer {
   background-color: #c1d7e2;

@@ -1,1 +1,19 @@
-<p>register works!</p>
+<div class="wrapper">
+  <form class="form-signin">
+    <h2 class="form-signin-heading">Please sign in</h2>
+    <input type="text" class="form-control" name="email" placeholder="Email Address" [(ngModel)]="mailaddress" />
+    <input type="password" class="form-control" name="password" placeholder="Password" [(ngModel)]="password"/>
+    <div class="divider-new"></div>
+    <input type="text" class="form-control" name="firstname" placeholder="First Name" [(ngModel)]="firstname"/>
+    <input type="text" class="form-control" name="lastname" placeholder="Last Name" [(ngModel)]="lastname"/>
+    <input type="text" class="form-control" name="postal code" placeholder="Postal Code" [(ngModel)]="postal_code"/>
+    <input type="text" class="form-control" name="house number" placeholder="House Number" [(ngModel)]="house_number"/>
+
+    <p class="red" *ngIf="error">input is invalid</p>
+
+    <label class="checkbox">
+      <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Remember me
+    </label>
+    <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="onsubmit()">Login</button>
+  </form>
+</div>

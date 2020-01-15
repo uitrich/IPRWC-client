@@ -1,7 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {HttpService} from '../services/http.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Product} from '../model/Product.model';
+import {environment} from '../../environments/environment';
 
 @Component({
   selector: 'app-product-view',
@@ -10,13 +11,19 @@ import {Product} from '../model/Product.model';
 })
 export class ProductViewComponent implements OnInit {
   @Input() product: Product;
-  image;
-  constructor(private httpService: HttpService, private route: ActivatedRoute) {
+  @Input() image;
+  @Input()thumbnail: boolean;
+  constructor(private httpService: HttpService, private route: ActivatedRoute, private router: Router) {
   }
   ngOnInit() {
-    console.log(this.product.image);
-    this.product.image = this.product.image.split(',')[1];
-    this.createImageFromBlob(this.base64converter(this.product.image));
+    if (this.thumbnail === undefined) { this.thumbnail = false; }
+    this.createImageFromBlob(this.base64converter(this.image.split(',')[1]));
+  }
+
+  addToShoppingCart(id: number) {
+    this.httpService.makePostRequest( 'api/shoppingcart/' + id, '').subscribe(data => {
+      this.router.navigate(['shoppingcart']);
+    });
   }
 
   createImageFromBlob(image: Blob) {

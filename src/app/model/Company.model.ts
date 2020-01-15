@@ -19,4 +19,8 @@ export class Company {
   }
   private _id: number ;
   private _name: string;
+
+  toObject() {
+    return { id: this.id, name: this.name};
+  }
 }

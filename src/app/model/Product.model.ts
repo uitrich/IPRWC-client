@@ -10,6 +10,14 @@ export class Product {
   private _company: Company;
   private _id: number;
   private _image: string;
+  private _quantity = 1;
+  get quantity(): number {
+    return this._quantity;
+  }
+
+  set quantity(value: number) {
+    this._quantity = value;
+  }
   get id(): number {
     return this._id;
   }
@@ -59,5 +67,17 @@ export class Product {
 
   set image(value: string) {
     this._image = value;
+  }
+
+  toObject() {
+    return {
+      name: this.name,
+      id: this.id,
+      image: this.image,
+      body_location: this.body_location,
+      company: this.company,
+      category: this.category,
+      price: this.price
+    };
   }
 }

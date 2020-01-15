@@ -5,33 +5,33 @@
         <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
           Category<span class="caret"></span></a>
         <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#"><i class="fas fa-dumbbell"></i> Fitness</a>
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#"><i class="fas fa-dog"></i> Pets and Animals</a>
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#"><i class="fas fa-gamepad"></i> Gaming</a>
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#"><i class="fas fa-heartbeat"></i> Lifestyle</a>
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#"><i class="fas fa-child"></i> Entertainment</a>
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#"><i class="fas fa-industry"></i> Industrial</a>
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#"><i class="fas fa-briefcase-medical"></i> Medical</a>
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#"><i class="fas fa-running"></i> Lifestyle, Fitness</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect (click)="category(1)"><i class="fas fa-dumbbell"></i> Fitness</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect (click)="category(2)"><i class="fas fa-dog"></i> Pets and Animals</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect (click)="category(3)"><i class="fas fa-gamepad"></i> Gaming</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect (click)="category(4)"><i class="fas fa-heartbeat"></i> Lifestyle</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect (click)="category(5)"><i class="fas fa-child"></i> Entertainment</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect (click)="category(6)"><i class="fas fa-industry"></i> Industrial</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect (click)="category(7)"><i class="fas fa-briefcase-medical"></i> Medical</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect (click)="category(8)"><i class="fas fa-running"></i> Lifestyle, Fitness</a>
         </div>
       </li>
       <li class="nav-item dropdown" dropdown>
       <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
         Body Location<span class="caret"></span></a>
       <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
-        <a class="dropdown-item waves-light" mdbWavesEffect href="#"><i class="fas fa-mitten"></i> Hands</a>
-        <a class="dropdown-item waves-light" mdbWavesEffect href="#"><i class="far fa-thumbs-up"></i>Wrist </a>
-        <a class="dropdown-item waves-light" mdbWavesEffect href="#"><i class="fas fa-user"></i> Torso</a>
-        <a class="dropdown-item waves-light" mdbWavesEffect href="#"><i class="fas fa-walking"></i> Waist</a>
-        <a class="dropdown-item waves-light" mdbWavesEffect href="#"><i class="fas fa-user-circle"></i> neck</a>
-        <a class="dropdown-item waves-light" mdbWavesEffect href="#"><i class="fas fa-user-alt"></i> Chest</a>
-        <a class="dropdown-item waves-light" mdbWavesEffect href="#"><i class="fas fa-blind"></i> Arms</a>
-        <a class="dropdown-item waves-light" mdbWavesEffect href="#"><i class="fas fa-user-circle"></i> Head</a>
-        <a class="dropdown-item waves-light" mdbWavesEffect href="#"><i class="fas fa-shoe-prints"></i> Feet</a>
+        <a class="dropdown-item waves-light" mdbWavesEffect (click)="bodyLocation(1)"><i class="fas fa-mitten"></i> Hands</a>
+        <a class="dropdown-item waves-light" mdbWavesEffect (click)="bodyLocation(6)"><i class="far fa-thumbs-up"></i>Wrist </a>
+        <a class="dropdown-item waves-light" mdbWavesEffect (click)="bodyLocation(2)"><i class="fas fa-user"></i> Torso</a>
+        <a class="dropdown-item waves-light" mdbWavesEffect (click)="bodyLocation(3)"><i class="fas fa-walking"></i> Waist</a>
+        <a class="dropdown-item waves-light" mdbWavesEffect (click)="bodyLocation(4)"><i class="fas fa-user-circle"></i> neck</a>
+        <a class="dropdown-item waves-light" mdbWavesEffect (click)="bodyLocation(5)"><i class="fas fa-user-alt"></i> Chest</a>
+        <a class="dropdown-item waves-light" mdbWavesEffect (click)="bodyLocation(7)"><i class="fas fa-blind"></i> Arms</a>
+        <a class="dropdown-item waves-light" mdbWavesEffect (click)="bodyLocation(8)"><i class="fas fa-user-circle"></i> Head</a>
+        <a class="dropdown-item waves-light" mdbWavesEffect (click)="bodyLocation(9)"><i class="fas fa-shoe-prints"></i> Feet</a>
       </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link waves-light" mdbWavesEffect>Brand / Company</a>
+        <a class="nav-link waves-light" mdbWavesEffect (click)="sendToCompany()">Brand / Company</a>
       </li>
     </ul>
   </links>

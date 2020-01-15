@@ -1,10 +1,11 @@
-<h4>{{search}}</h4>
-<div class="divider-new"></div>
-<div *ngFor="let p of products" class="container">
-  <div class="row">
-    <div class="col-md-4 mb-4"><app-product-view *ngIf="p[1] != undefined && p[1] != null" [product]="p[0]"></app-product-view></div>
-    <div class="col-md-4 mb-4"><app-product-view *ngIf="p[1] != undefined && p[1] != null" [product]="p[1]"></app-product-view></div>
-    <div class="col-md-4 mb-4"><app-product-view *ngIf="p[1] != undefined && p[1] != null" [product]="p[2]"></app-product-view></div>
+<app-category-header></app-category-header>
+<h4 class="flex-center">{{headervalue}}</h4>
+<hr>
+<app-search-company *ngIf="searchCompany"></app-search-company>
+<div class="container">
+  <div *ngFor="let p of products; let i = index">
+    <app-product-view *ngIf="p!= undefined && p != null" [product]="p" [image]="images[i]"></app-product-view>
   </div>
 </div>
-<app-pagination length="{{length}}" (messageEvent)="receiveMessage($event)"></app-pagination>
+<app-pagination [length]="this.length" (messageEvent)="receiveMessage($event)">
+</app-pagination>

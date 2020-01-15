@@ -6,7 +6,7 @@
 <div class="container">
   <div class="row">
     <div *ngFor="let p of products" class="container" class="col-md-4 mb-4">
-      <app-product-view [product]="p"></app-product-view>
+      <app-product-view [product]="p" [image]="p.image" ></app-product-view>
     </div>
   </div>
 </div>

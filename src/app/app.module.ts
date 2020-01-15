@@ -11,10 +11,18 @@ import { SearchComponent } from './search/search.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ProductViewComponent } from './product-view/product-view.component';
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { PaginationComponent } from './pagination/pagination.component';
 import { CategoryHeaderComponent } from './category-header/category-header.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import {CookieService} from 'ngx-cookie-service';
+import {RequestInterceptorService} from './shared/request-interceptor.service';
+import { SearchCompanyComponent } from './search/search-company/search-company.component';
+import { AdminComponent } from './admin/admin.component';
+import { ProductManagerComponent } from './admin/product-manager/product-manager.component';
+import { AccountManagerComponent } from './admin/account-manager/account-manager.component';
+import { CategoriesManagerComponent } from './admin/categories-manager/categories-manager.component';
 
 @NgModule({
   declarations: [
@@ -26,16 +34,30 @@ import {FormsModule} from '@angular/forms';
     RegisterComponent,
     ProductViewComponent,
     PaginationComponent,
-    CategoryHeaderComponent
+    CategoryHeaderComponent,
+    ShoppingCartComponent,
+    SearchCompanyComponent,
+    AdminComponent,
+    ProductManagerComponent,
+    AccountManagerComponent,
+    CategoriesManagerComponent
   ],
   imports: [
     MDBBootstrapModule.forRoot(),
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,                             // <========== Add this line!
+    ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [
+    CookieService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: RequestInterceptorService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,7 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm overflow-auto constrained-height">
+      <button *ngFor="let company of companies" class="btn" (click)="routeToCompany(company.id)">{{company.name}}</button>
+    </div>
+  </div>
+</div>

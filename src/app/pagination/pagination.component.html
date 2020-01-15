@@ -6,15 +6,15 @@
         <span class="sr-only">Previous</span>
       </a>
     </li>
-    <li [classList]="pagenumber == max - 8 ? 'active page-item' : 'page-item' "><button (click)="clickPage(max-8)" class="page-link" >{{max - 8}}</button></li>
-    <li [classList]="pagenumber == max - 7 ? 'active page-item' : 'page-item'"><button (click)="clickPage(max-7)" class="page-link" >{{max - 7}}</button></li>
-    <li [classList]="pagenumber == max - 6 ? 'active page-item' : 'page-item'"><button (click)="clickPage(max-6)" class="page-link" >{{max - 6}}</button></li>
-    <li [classList]="pagenumber == max - 5 ? 'active page-item' : 'page-item'"><button (click)="clickPage(max-5)" class="page-link" >{{max - 5}}</button></li>
-    <li [classList]="pagenumber == max - 4 ? 'active page-item' : 'page-item'"><button (click)="clickPage(max-4)" class="page-link" >{{max - 4}}</button></li>
-    <li [classList]="pagenumber == max - 3 ? 'active page-item' : 'page-item'"><button (click)="clickPage(max-3)" class="page-link" >{{max - 3}}</button></li>
-    <li [classList]="pagenumber == max - 2 ? 'active page-item' : 'page-item'"><button (click)="clickPage(max-2)" class="page-link" >{{max - 2}}</button></li>
-    <li [classList]="pagenumber == max - 1 ? 'active page-item' : 'page-item'"><button (click)="clickPage(max-1)" class="page-link" >{{max - 1}}</button></li>
-    <li [classList]="pagenumber == max ? 'active page-item' : 'page-item'"><button (click)="clickPage(max)" class="page-link" >{{max}}</button></li>
+    <li *ngIf="length/12 >= 1" [classList]="pagenumber == max - 8 ? 'active page-item' : 'page-item' "><button (click)="clickPage(max-8)" class="page-link" >{{max - 8}}</button></li>
+    <li *ngIf="length/12 >= 2" [classList]="pagenumber == max - 7 ? 'active page-item' : 'page-item'"><button (click)="clickPage(max-7)" class="page-link" >{{max - 7}}</button></li>
+    <li *ngIf="length/12 >= 3" [classList]="pagenumber == max - 6 ? 'active page-item' : 'page-item'"><button (click)="clickPage(max-6)" class="page-link" >{{max - 6}}</button></li>
+    <li *ngIf="length/12 >= 4" [classList]="pagenumber == max - 5 ? 'active page-item' : 'page-item'"><button (click)="clickPage(max-5)" class="page-link" >{{max - 5}}</button></li>
+    <li *ngIf="length/12 >= 5" [classList]="pagenumber == max - 4 ? 'active page-item' : 'page-item'"><button (click)="clickPage(max-4)" class="page-link" >{{max - 4}}</button></li>
+    <li *ngIf="length/12 >= 6" [classList]="pagenumber == max - 3 ? 'active page-item' : 'page-item'"><button (click)="clickPage(max-3)" class="page-link" >{{max - 3}}</button></li>
+    <li *ngIf="length/12 >= 7" [classList]="pagenumber == max - 2 ? 'active page-item' : 'page-item'"><button (click)="clickPage(max-2)" class="page-link" >{{max - 2}}</button></li>
+    <li *ngIf="length/12 >= 8" [classList]="pagenumber == max - 1 ? 'active page-item' : 'page-item'"><button (click)="clickPage(max-1)" class="page-link" >{{max - 1}}</button></li>
+    <li *ngIf="length/12 >= 9" [classList]="pagenumber == max ? 'active page-item' : 'page-item'"><button (click)="clickPage(max)" class="page-link" >{{max}}</button></li>
     <li class="page-item">
       <a class="page-link" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>

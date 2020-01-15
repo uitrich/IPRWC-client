@@ -24,5 +24,6 @@ export class PaginationComponent implements OnInit {
     if (this.max >= length - 5) { return; }
     if (this.max <= 4) { return; }
     this.max = this.pagenumber + 5;
+    console.log(length);
   }
 }

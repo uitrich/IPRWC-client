@@ -1,0 +1,12 @@
+<div class="container-fluid">
+  <select class="form-control"[(ngModel)]="selectedOption">
+    <option [selected]="true" value="products"> products</option>
+    <option value="accounts"> accounts</option>
+    <option value="categories"> categories</option>
+  </select>
+
+  <app-product-manager *ngIf="selectedOption==='products'"></app-product-manager>
+  <app-account-manager *ngIf="selectedOption==='accounts'"></app-account-manager>
+  <app-categories-manager *ngIf="selectedOption==='categories'"></app-categories-manager>
+
+</div>

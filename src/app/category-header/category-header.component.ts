@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {HttpService} from '../services/http.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-category-header',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoryHeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
+  category(id: number) {
+    this.router.navigate(['/search'], { queryParams: { category: id } });
+  }
+  bodyLocation(id: number) {
+    this.router.navigate(['/search'], { queryParams: { body_location: id } });
+  }
+  company(id: number) {
+    this.router.navigate(['/search'], { queryParams: { company: id } });
+  }
+
+  sendToCompany() {
+    this.router.navigate(['/search'], {queryParams: { companySearch: true}});
+  }
 }
