@@ -1,3 +1,4 @@
+<div *ngIf="loaded">
 <app-category-header></app-category-header>
 <h4 class="flex-center">{{headervalue}}</h4>
 <hr>
@@ -9,3 +10,4 @@
 </div>
 <app-pagination [length]="this.length" (messageEvent)="receiveMessage($event)">
 </app-pagination>
+</div>

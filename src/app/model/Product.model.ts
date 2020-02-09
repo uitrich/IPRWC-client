@@ -11,6 +11,16 @@ export class Product {
   private _id: number;
   private _image: string;
   private _quantity = 1;
+
+  constructor(name, price, body_location, category, company, id, image) {
+    this._name = name;
+    this._price = price;
+    this._body_location = body_location;
+    this._category = category;
+    this._company = company;
+    this._id = id;
+    this._image = image;
+  }
   get quantity(): number {
     return this._quantity;
   }

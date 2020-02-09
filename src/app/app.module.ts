@@ -22,7 +22,7 @@ import { SearchCompanyComponent } from './search/search-company/search-company.c
 import { AdminComponent } from './admin/admin.component';
 import { ProductManagerComponent } from './admin/product-manager/product-manager.component';
 import { AccountManagerComponent } from './admin/account-manager/account-manager.component';
-import { CategoriesManagerComponent } from './admin/categories-manager/categories-manager.component';
+import {AlifeFileToBase64Module} from 'alife-file-to-base64';
 
 @NgModule({
   declarations: [
@@ -39,8 +39,7 @@ import { CategoriesManagerComponent } from './admin/categories-manager/categorie
     SearchCompanyComponent,
     AdminComponent,
     ProductManagerComponent,
-    AccountManagerComponent,
-    CategoriesManagerComponent
+    AccountManagerComponent
   ],
   imports: [
     MDBBootstrapModule.forRoot(),
@@ -49,6 +48,7 @@ import { CategoriesManagerComponent } from './admin/categories-manager/categorie
     HttpClientModule,
     FormsModule,                             // <========== Add this line!
     ReactiveFormsModule,
+    AlifeFileToBase64Module
   ],
   providers: [
     CookieService,

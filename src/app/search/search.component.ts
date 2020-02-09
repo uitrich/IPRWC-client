@@ -17,6 +17,7 @@ export class SearchComponent implements OnInit {
   category: number;
   body_location: number;
   company: number;
+  loaded = false;
   constructor(private httpService: HttpService, private route: ActivatedRoute) {
   }
   message: number;
@@ -61,6 +62,7 @@ export class SearchComponent implements OnInit {
           this.headervalue = 'Body Location: ' + firstProduct.body_location.name; this.searchCompany = false;
         }
         this.products = unordered;
+        this.loaded = true;
       }
     );
   }

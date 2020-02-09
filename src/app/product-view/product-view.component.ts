@@ -10,7 +10,7 @@ import {environment} from '../../environments/environment';
   styleUrls: ['./product-view.component.scss']
 })
 export class ProductViewComponent implements OnInit {
-  @Input() product: Product;
+  @Input() product: Product = null;
   @Input() image;
   @Input()thumbnail: boolean;
   constructor(private httpService: HttpService, private route: ActivatedRoute, private router: Router) {

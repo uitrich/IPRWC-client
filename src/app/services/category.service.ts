@@ -2,28 +2,31 @@ import {Injectable} from '@angular/core';
 import {HttpService} from './http.service';
 import {Product} from '../model/Product.model';
 import {Category} from '../model/Category.model';
+import {HttpClient} from '@angular/common/http';
+import {Company} from '../model/Company.model';
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProductService {
-  constructor(private httpService: HttpService) {}
+export class CategoryService {
+  constructor(private httpClient: HttpClient) {}
 
-  getAll() { return this.httpService.makeGetRequest('api/company')}
+  getAll() { return this.httpClient.get<Category[]>(environment.apiUrl + 'api/category'); }
 
   get(id: number) {
-    return this.httpService.makeGetRequest('api/company/' + id);
+    return this.httpClient.get<Category>(environment.apiUrl + 'api/category/' + id);
   }
 
   post(category: Category) {
-    return this.httpService.makePostRequest('api/category', category.toObject());
+    return this.httpClient.post(environment.apiUrl + 'api/category', category.toObject());
   }
 
   put(category: Category) {
-    return this.httpService.makePutRequest('api/category', category.toObject());
+    return this.httpClient.put(environment.apiUrl + 'api/category', category.toObject());
   }
 
   delete(id: number) {
-    return this.httpService.makeDeleteRequest('api/category/' + id);
+    return this.httpClient.delete(environment.apiUrl + 'api/category/' + id);
   }
 }
