@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <select class="form-control"[(ngModel)]="selectedOption">
-    <option [selected]="true" value="products"> products</option>
-    <option value="accounts"> accounts</option>
+    <option value="products"> products</option>
+    <option [selected]="true" value="accounts"> accounts</option>
   </select>
 
   <app-product-manager *ngIf="selectedOption==='products'"></app-product-manager>

@@ -34,4 +34,7 @@ export class AccountManagerComponent implements OnInit {
   post(add: any) {
     this.accountService.post(this.newAccount).subscribe(data => add.hide());
   }
+  checkThis() {
+    console.log(this);
+  }
 }
