@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  apiUrl: 'https://nathan.waarom-werkt-het-niet.nl/'
 };
