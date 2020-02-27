@@ -29,4 +29,8 @@ export class HeaderComponent implements OnInit {
   onSubmit(event: any) {
     this.router.navigate(['/search'], { queryParams: { search: event.target.value } });
   }
+
+  logout() {
+    return this.authenticationService.logout();
+  }
 }
