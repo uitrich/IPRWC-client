@@ -1,4 +1,4 @@
-import { Account } from './account.model';
+import { Account } from './Account.model';
 
 export class Group {
   private _id: number = 0;
