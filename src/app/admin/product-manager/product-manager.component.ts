@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {Body_Location} from '../../model/Body_Location.model';
 import {Account} from '../../model/Account.model';
 import {Company} from '../../model/Company.model';
@@ -10,6 +10,7 @@ import {CompanyService} from '../../services/company.service';
 import {CategoryService} from '../../services/category.service';
 import {BodyLocationService} from '../../services/bodyLocation.service';
 import {Category} from '../../model/Category.model';
+import {element} from 'protractor';
 
 @Component({
   selector: 'app-product-manager',
@@ -70,7 +71,7 @@ export class ProductManagerComponent implements OnInit {
   remove(id: number) {
     console.log(id);
     this.productService.delete(id).subscribe(data => {
-      this.getAll();
+      document.getElementById(id.toString()).remove();
     });
   }
 

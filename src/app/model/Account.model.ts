@@ -37,26 +37,26 @@ export class Account {
   set postal_code(value: string) {
     this._postal_code = value;
   }
-  get lastname(): string {
-    return this._lastname;
+  get lastName(): string {
+    return this._lastName;
   }
 
-  set lastname(value: string) {
-    this._lastname = value;
+  set lastName(value: string) {
+    this._lastName = value;
   }
-  get firstname(): string {
-    return this._firstname;
-  }
-
-  set firstname(value: string) {
-    this._firstname = value;
-  }
-  get mailaddress(): string {
-    return this._mailaddress;
+  get firstName(): string {
+    return this._firstName;
   }
 
-  set mailaddress(value: string) {
-    this._mailaddress = value;
+  set firstName(value: string) {
+    this._firstName = value;
+  }
+  get mailAddress(): string {
+    return this._mailAddress;
+  }
+
+  set mailAddress(value: string) {
+    this._mailAddress = value;
   }
   get groups(): Group[] {
     return this._groups;
@@ -66,21 +66,21 @@ export class Account {
     this._groups = value;
   }
   private _groups: Group[];
-  private _mailaddress: string;
-  private _firstname: string;
+  private _mailAddress: string;
+  private _firstName: string;
   private _password: string;
-  private _lastname: string;
+  private _lastName: string;
   private _postal_code: string;
   private _house_number: string;
   private _reference : string;
   private _group: Group[];
 
-  constructor(mailaddress, firstname, password, lastname, postal_code, house_number, reference) {
-    this._mailaddress = mailaddress;
-    this._firstname = firstname;
-    this._lastname = lastname;
-    this._postal_code = postal_code;
-    this._house_number = house_number;
+  constructor(mailAddress, firstName, password, lastName, postalCode, houseNumber, reference) {
+    this._mailAddress = mailAddress;
+    this._firstName = firstName;
+    this._lastName = lastName;
+    this._postal_code = postalCode;
+    this._house_number = houseNumber;
     this._reference = reference;
   }
 

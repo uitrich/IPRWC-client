@@ -23,7 +23,7 @@ export class AccountManagerComponent implements OnInit {
   }
 
   remove(sure: any) {
-    this.accountService.delete(this.selectedAccount.mailaddress).subscribe(data => sure.hide());
+    this.accountService.delete(this.selectedAccount.mailAddress).subscribe(data => sure.hide());
     this.accountService.getAll().subscribe(data => this.accounts = data);
   }
 

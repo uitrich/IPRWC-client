@@ -31,11 +31,11 @@
           <span aria-hidden="true">×</span>
         </button>
         <h4 class="modal-title w-100" id="myModalLabel">Are you sure you want to delete: </h4>
-        <h4> {{selectedAccount.mailaddress}}</h4>
+        <h4> {{selectedAccount.mailAddress}}</h4>
       </div>
       <div class="modal-footer">
         <button type="button" mdbBtn color="blue" class="waves-light" aria-label="Close" (click)="sure.hide(); " mdbWavesEffect>Close</button>
-        <button type="button" mdbBtn color="red" class="relative waves-light" (click)="remove(sure); sure.hide()" mdbWavesEffect>I want to delete {{selectedAccount.mailaddress}}</button>
+        <button type="button" mdbBtn color="red" class="relative waves-light" (click)="remove(sure); sure.hide()" mdbWavesEffect>I want to delete {{selectedAccount.mailAddress}}</button>
       </div>
     </div>
   </div>
@@ -49,20 +49,20 @@
           <span aria-hidden="true">×</span>
         </button>
         <h4 class="modal-title w-100" id="myModalLabel">Editing: </h4>
-        <h4> {{selectedAccount.mailaddress}}</h4>
+        <h4> {{selectedAccount.mailAddress}}</h4>
       </div>
       <div class="modal-body" >
         <label style="display: block">
           First Name:
-          <input class="form-control" type="text" value="{{selectedAccount?.firstname}} " [(ngModel)]="selectedAccount.firstname">
+          <input class="form-control" type="text" value="{{selectedAccount?.firstName}} " [(ngModel)]="selectedAccount.firstName">
         </label>
         <label style="display: block">
           Last Name:
-          <input class="form-control" type="text" value="{{selectedAccount.lastname}}" [(ngModel)]="selectedAccount.lastname">
+          <input class="form-control" type="text" value="{{selectedAccount.lastName}}" [(ngModel)]="selectedAccount.lastName">
         </label>
         <label style="display: block">
           Email:
-          <input class="form-control"  type="text" value="{{selectedAccount.mailaddress}}" disabled>
+          <input class="form-control" type="text" value="{{selectedAccount.mailAddress}}" disabled>
         </label>
         <label style="display: block">
           Postal Code:

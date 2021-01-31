@@ -43,6 +43,7 @@ export class SearchComponent implements OnInit {
 
   }
   getProducts(page: number) {
+    this.images = [];
     const categoryString = this.category !== undefined ? '&category=' + this.category : '';
     const companyString = this.company !== undefined ? '&company=' + this.company : '';
     const bodyLocationString = this.body_location !== undefined ? '&body_location=' + this.body_location : '';
