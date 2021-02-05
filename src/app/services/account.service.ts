@@ -18,7 +18,7 @@ export class AccountService {
     return this.httpClient.get<Account>(environment.apiUrl + 'api/account/admin/' + mailAdress);
   }
 
-  post(account: Account) {
+  post(account) {
     return this.httpClient.post(environment.apiUrl + 'api/account/makeAccount', account);
   }
 
