@@ -1,19 +1,43 @@
-<div class="wrapper">
+<div class="container-fluid">
   <form class="form-signin">
-    <h2 class="form-signin-heading">Please sign in</h2>
-    <input type="text" class="form-control" name="email" placeholder="Email Address" [(ngModel)]="mailaddress" />
-    <input type="password" class="form-control" name="password" placeholder="Password" [(ngModel)]="password"/>
-    <div class="divider-new"></div>
-    <input type="text" class="form-control" name="firstname" placeholder="First Name" [(ngModel)]="firstname"/>
-    <input type="text" class="form-control" name="lastname" placeholder="Last Name" [(ngModel)]="lastname"/>
-    <input type="text" class="form-control" name="postal code" placeholder="Postal Code" [(ngModel)]="postal_code"/>
-    <input type="text" class="form-control" name="house number" placeholder="House Number" [(ngModel)]="house_number"/>
+    <div class="card">
+      <div class="card-header">Login details</div>
+      <div class="card-body">
+        <label class="col-12">
+          Email <i class="text-danger" *ngIf="ValidationBooleans.mailAddress">this can only be an email address, for example: example@gmail.com</i>
+          <input type="text" class="form-control" name="email" placeholder="Email Address" [(ngModel)]="account.mailAddress" />
+        </label>
 
-    <p class="red" *ngIf="error">input is invalid</p>
-
-    <label class="checkbox">
-      <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Remember me
-    </label>
-    <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="onsubmit()">Login</button>
+        <label class="col-12">
+          Password
+          <i class="text-danger" *ngIf="ValidationBooleans.password">has to contain lower-case and upper-case letters, a sign and a number</i>
+          <input type="password" class="form-control" name="password" placeholder="Password" [(ngModel)]="account.password"/>
+        </label>
+      </div>
+    </div>
+    <div class="card">
+    <div class="card-header">Addressing</div>
+      <div class="card-body">
+        <div class="form-group">
+          <label class="col-6">
+            First name
+            <input type="text" class="form-control" name="firstname" placeholder="First Name" [(ngModel)]="account.firstName"/>
+          </label>
+          <label class="col-6">
+            Last name
+            <input type="text" class="form-control" name="lastname" placeholder="Last Name" [(ngModel)]="account.lastName"/>
+          </label>
+        </div>
+        <label class="col-6">
+          Postal code
+          <input type="text" class="form-control" name="postal code" placeholder="Postal Code" [(ngModel)]="account.postalCode"/>
+        </label>
+        <label class="col-6">
+          House number
+          <input type="text" class="form-control" name="house number" placeholder="House Number" [(ngModel)]="account.houseNumber"/>
+        </label>
+      </div>
+    </div>
+    <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="onsubmit()">Register</button>
   </form>
 </div>

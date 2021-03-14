@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {HttpService} from '../services/http.service';
 import {Account} from '../model/Account.model';
 import {AccountService} from '../services/account.service';
+import {HttpErrorResponse} from '@angular/common/http';
+import {Validator} from '../BackendValidatorHandler/Validator';
 
 @Component({
   selector: 'app-register',
@@ -9,41 +11,39 @@ import {AccountService} from '../services/account.service';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-  mailaddress: string;
-  firstname: string;
-  password: string;
-  lastname: string;
-  postal_code: string;
-  house_number: string;
-  error = false;
+  account: Account = new Account('','','','','', '', '');
+  ValidationBooleans =  {
+    password: false,
+    mailAddress: false
+  };
   success = false;
   constructor(private accountService: AccountService) { }
 
-  isValid() {
-    if (this.mailaddress === '' || this.firstname === '' || this.lastname === '' || this.password === '' || this.postal_code === '' || this.house_number === '') {
-      this.error = true;
-      return false;
-    }
-    return true;
-  }
   ngOnInit() {
   }
 
   onsubmit() {
     const account = {
-      mailAddress: this.mailaddress,
-      firstName: this.firstname,
-      password: this.password,
-      lastName: this.lastname,
-      postalCode: this.postal_code,
-      houseNumber: this.house_number
+      mailAddress: this.account.mailAddress,
+      firstName: this.account.firstName,
+      password: this.account.password,
+      lastName: this.account.lastName,
+      postalCode: this.account.postalCode,
+      houseNumber: this.account.houseNumber
     };
-    if (this.isValid()) {
-      this.accountService.post(account).subscribe(data => {
+    this.accountService.post(account).subscribe(data => {
         this.success = data as boolean;
+      },
+      error => {
+        const err: HttpErrorResponse = error as HttpErrorResponse;
+        Validator.ClassifyBackendResponse(err.error.errors.toString()).forEach((value) => {
+          if (value === 'password') {
+            this.ValidationBooleans.password = true;
+          }
+          if (value === 'mailAddress') {
+            this.ValidationBooleans.mailAddress = true;
+          }
+        });
       });
-    } else {
-      console.log('invalid', account);
     }
   }
-}

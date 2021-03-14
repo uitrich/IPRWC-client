@@ -6,6 +6,7 @@ import {environment} from '../../environments/environment';
 import {catchError} from 'rxjs/operators';
 import {AuthenticationService} from '../services/authentication.service';
 import {Router} from '@angular/router';
+import {error} from 'util';
 
 @Component({
   selector: 'app-login',
@@ -16,10 +17,10 @@ export class LoginComponent implements OnInit {
   valid = true;
   mailAddress = '';
   password = '';
-  loggedIn = false;
   onSubmit() {
     this.authenticationService.logIn(this.mailAddress, this.password).subscribe(success => {
-      if(success){
+      this.valid = success;
+      if (success) {
         this.router.navigate(['/']);
         this.authenticationService.getAccountFromServer();
       }
@@ -38,6 +39,7 @@ export class LoginComponent implements OnInit {
       if (loggedIn) {
         this.router.navigate(['/']);
       }
-    });
+    }
+    );
   }
 }

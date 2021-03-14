@@ -23,19 +23,19 @@ export class Account {
   set password(value: string) {
     this._password = value;
   }
-  get house_number(): string {
-    return this._house_number;
+  get houseNumber(): string {
+    return this._houseNumber;
   }
 
-  set house_number(value: string) {
-    this._house_number = value;
+  set houseNumber(value: string) {
+    this._houseNumber = value;
   }
-  get postal_code(): string {
-    return this._postal_code;
+  get postalCode(): string {
+    return this._postalCode;
   }
 
-  set postal_code(value: string) {
-    this._postal_code = value;
+  set postalCode(value: string) {
+    this._postalCode = value;
   }
   get lastName(): string {
     return this._lastName;
@@ -70,8 +70,8 @@ export class Account {
   private _firstName: string;
   private _password: string;
   private _lastName: string;
-  private _postal_code: string;
-  private _house_number: string;
+  private _postalCode: string;
+  private _houseNumber: string;
   private _reference : string;
   private _group: Group[];
 
@@ -79,8 +79,8 @@ export class Account {
     this._mailAddress = mailAddress;
     this._firstName = firstName;
     this._lastName = lastName;
-    this._postal_code = postalCode;
-    this._house_number = houseNumber;
+    this._postalCode = postalCode;
+    this._houseNumber = houseNumber;
     this._reference = reference;
   }
 
