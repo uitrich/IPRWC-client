@@ -17,21 +17,7 @@ export class LoginComponent implements OnInit {
   valid = true;
   mailAddress = '';
   password = '';
-  onSubmit() {
-    this.authenticationService.logIn(this.mailAddress, this.password).subscribe(success => {
-      this.valid = success;
-      if (success) {
-        this.router.navigate(['/']);
-        this.authenticationService.getAccountFromServer();
-      }
-    });
-  }
-  mailKeyUp(event: any) {
-    this.mailAddress = event.target.value;
-  }
-  passwordKeyUp(event: any) {
-    this.password = event.target.value;
-  }
+
   constructor(private httpService: HttpService,
               private authenticationService: AuthenticationService,
               private router: Router,
@@ -48,5 +34,20 @@ export class LoginComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       this.mailAddress = params.get('email');
     });
+  }
+  onSubmit() {
+    this.authenticationService.logIn(this.mailAddress, this.password).subscribe(success => {
+      this.valid = success;
+      if (success) {
+        this.router.navigate(['/']);
+        this.authenticationService.getAccountFromServer();
+      }
+    });
+  }
+  mailKeyUp(event: any) {
+    this.mailAddress = event.target.value;
+  }
+  passwordKeyUp(event: any) {
+    this.password = event.target.value;
   }
 }

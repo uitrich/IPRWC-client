@@ -41,13 +41,13 @@ export class ProductService {
       {params: this.getCorrectParams(page, search, category, company, bodyLocation)}
       );
   }
-  getCorrectParams(page, search, category, company, bodyLocation) {
+  getCorrectParams(page: number, search: string, category: string, company: string, bodyLocation: string) {
     const result = new HttpParams();
-    if (page === undefined) { result.set('page', page.toString()); }
-    if (page === undefined) {  result.set('search', search); }
-    if (page === undefined) { result.set('category', category); }
-    if (page === undefined) { result.set('company', company); }
-    if (page === undefined) { result.set('bodyLocation', bodyLocation); }
+    if (page !== undefined) { result.set('page', page.toString()); }
+    if (search !== undefined) {  result.set('search', search); }
+    if (category !== undefined) {result.set('category', category); }
+    if (company !== undefined) { result.set('company', company); }
+    if (bodyLocation !== undefined) { result.set('bodyLocation', bodyLocation); }
     return result;
   }
 

@@ -2,6 +2,25 @@ import {Group} from './Group.model';
 
 export class Account {
 
+
+  private _groups: Group[];
+  private _mailAddress: string;
+  private _firstName: string;
+  private _password: string;
+  private _lastName: string;
+  private _postalCode: string;
+  private _houseNumber: string;
+  private _reference : string;
+  private _group: Group[];
+
+  constructor(mailAddress, firstName, password, lastName, postalCode, houseNumber, reference) {
+    this._mailAddress = mailAddress;
+    this._firstName = firstName;
+    this._lastName = lastName;
+    this._postalCode = postalCode;
+    this._houseNumber = houseNumber;
+    this._reference = reference;
+  }
   get reference(): string {
     return this._reference;
   }
@@ -65,24 +84,5 @@ export class Account {
   set groups(value: Group[]) {
     this._groups = value;
   }
-  private _groups: Group[];
-  private _mailAddress: string;
-  private _firstName: string;
-  private _password: string;
-  private _lastName: string;
-  private _postalCode: string;
-  private _houseNumber: string;
-  private _reference : string;
-  private _group: Group[];
-
-  constructor(mailAddress, firstName, password, lastName, postalCode, houseNumber, reference) {
-    this._mailAddress = mailAddress;
-    this._firstName = firstName;
-    this._lastName = lastName;
-    this._postalCode = postalCode;
-    this._houseNumber = houseNumber;
-    this._reference = reference;
-  }
-
 }
 

@@ -1,4 +1,12 @@
 export class Company {
+  private _id: number ;
+  private _name: string;
+
+  constructor(id: number, name: string) {
+    this._id = id;
+    this._name = name;
+  }
+
   get id() {
     return this._id;
   }
@@ -13,13 +21,6 @@ export class Company {
   set name(value) {
     this._name = value;
   }
-  constructor(id: number, name: string) {
-    this._id = id;
-    this._name = name;
-  }
-  private _id: number ;
-  private _name: string;
-
   toObject() {
     return { id: this.id, name: this.name};
   }

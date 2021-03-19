@@ -7,12 +7,9 @@ import {Router} from '@angular/router';
   templateUrl: './category-header.component.html',
   styleUrls: ['./category-header.component.scss']
 })
-export class CategoryHeaderComponent implements OnInit {
+export class CategoryHeaderComponent {
 
   constructor(private router: Router) { }
-
-  ngOnInit() {
-  }
 
   category(id: number) {
     this.router.navigate(['/search'], { queryParams: { category: id } });

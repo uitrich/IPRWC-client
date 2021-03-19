@@ -1,4 +1,12 @@
 export class BodyLocation {
+  private _id: number ;
+  private _name: string;
+
+  constructor(id: number, name: string) {
+    this._id = id;
+    this._name = name;
+  }
+
   get id() {
     return this._id;
   }
@@ -13,10 +21,4 @@ export class BodyLocation {
   set name(value) {
     this._name = value;
   }
-  constructor(id: number, name: string) {
-    this._id = id;
-    this._name = name;
-  }
-  private _id: number ;
-  private _name: string;
 }
