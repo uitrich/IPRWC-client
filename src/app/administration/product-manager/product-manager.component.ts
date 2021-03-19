@@ -34,11 +34,10 @@ export class ProductManagerComponent implements OnInit {
   newImage: string;
   imageHasChanged: boolean;
   private message: any;
-  constructor(private productService: ProductService,
-              private httpService: HttpService,
-              private companyService: CompanyService,
-              private categoryService: CategoryService,
-              private bodyLocationService: BodyLocationService) {
+  constructor(private readonly productService: ProductService,
+              private readonly companyService: CompanyService,
+              private readonly categoryService: CategoryService,
+              private readonly bodyLocationService: BodyLocationService) {
     this.newProduct = new Product('', 0.00, new BodyLocation(0, ''), new Category(0, ''), new Company(0, ''), 0, '');
     this.selectedProduct = new Product('', 0.00, new BodyLocation(0, ''), new Category(0, ''), new Company(0, ''), 0, '');
   }

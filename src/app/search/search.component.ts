@@ -12,18 +12,18 @@ import {ProductService} from '../services/product.service';
 })
 export class SearchComponent implements OnInit {
   products: any[];
-  images = [];
+  images: string[] = [];
   length: number;
   search: string;
   category: string;
   bodyLocation: string;
   company: string;
   loaded = false;
-  constructor(private httpService: HttpService, private route: ActivatedRoute, private productService: ProductService) {
-  }
   message: number;
-  headervalue: number | string;
+  headerValue: number | string;
   searchCompany = false;
+  constructor(private readonly httpService: HttpService, private readonly route: ActivatedRoute, private productService: ProductService) {
+  }
 
   receiveMessage($event) {
     this.message = $event;
@@ -49,11 +49,11 @@ export class SearchComponent implements OnInit {
         unordered.forEach((product: Product) => {
           this.images.push(product.image);
         });
-        this.headervalue = this.search;
-        if (this.category !== undefined) { this.headervalue = 'Category: ' + firstProduct.category.name; this.searchCompany = false; }
-        if (this.company !== undefined) { this.headervalue = 'Company: ' + firstProduct.company.name; this.searchCompany = true; }
+        this.headerValue = this.search;
+        if (this.category !== undefined) { this.headerValue = 'Category: ' + firstProduct.category.name; this.searchCompany = false; }
+        if (this.company !== undefined) { this.headerValue = 'Company: ' + firstProduct.company.name; this.searchCompany = true; }
         if (this.bodyLocation !== undefined) {
-          this.headervalue = 'Body Location: ' + firstProduct.bodyLocation.name; this.searchCompany = false;
+          this.headerValue = 'Body Location: ' + firstProduct.bodyLocation.name; this.searchCompany = false;
         }
         this.products = unordered;
         this.loaded = true;

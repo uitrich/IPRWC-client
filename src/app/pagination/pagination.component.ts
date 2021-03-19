@@ -8,15 +8,12 @@ import {Product} from '../model/Product.model';
   templateUrl: './pagination.component.html',
   styleUrls: ['./pagination.component.scss']
 })
-export class PaginationComponent implements OnInit {
+export class PaginationComponent {
   max = 9;
   pagenumber = 1;
   @Input() length: number;
   @Output() messageEvent = new EventEmitter<number>();
-  constructor(private httpService: HttpService) { }
-
-  ngOnInit() {
-  }
+  constructor() { }
 
   clickPage(page: number) {
     this.pagenumber = page;

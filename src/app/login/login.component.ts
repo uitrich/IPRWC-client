@@ -18,10 +18,10 @@ export class LoginComponent implements OnInit {
   mailAddress = '';
   password = '';
 
-  constructor(private httpService: HttpService,
-              private authenticationService: AuthenticationService,
-              private router: Router,
-              private route: ActivatedRoute) { }
+  constructor(
+              private readonly authenticationService: AuthenticationService,
+              private readonly router: Router,
+              private readonly route: ActivatedRoute) { }
 
   ngOnInit() {
     this.authenticationService.checkLoggedInStatus().subscribe(

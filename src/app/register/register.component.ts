@@ -11,16 +11,13 @@ import {Router} from '@angular/router';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent {
   account: Account = new Account('','','','','', '', '');
   ValidationBooleans =  {
     password: false,
     mailAddress: false
   };
-  constructor(private accountService: AccountService, private router: Router) { }
-
-  ngOnInit() {
-  }
+  constructor(private readonly accountService: AccountService, private readonly router: Router) { }
 
   onsubmit() {
     const account = {

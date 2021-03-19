@@ -12,7 +12,7 @@ export class FeaturedComponent implements OnInit {
   products: any[];
   length: number;
 
-  constructor(private httpService: HttpService, private route: ActivatedRoute) {
+  constructor(private readonly httpService: HttpService, private readonly route: ActivatedRoute) {
   }
 
   ngOnInit() {

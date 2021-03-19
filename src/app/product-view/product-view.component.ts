@@ -13,12 +13,12 @@ import {ShoppingCartService} from '../services/shoppingcart.service';
 })
 export class ProductViewComponent implements OnInit {
   @Input() product: Product = null;
-  @Input() image;
+  @Input() image: string;
   @Input() thumbnail: boolean;
-  constructor(private route: ActivatedRoute,
-              private router: Router,
-              private imageService: ImageService,
-              private shoppingCartService: ShoppingCartService) {
+  constructor(private readonly route: ActivatedRoute,
+              private readonly router: Router,
+              private readonly imageService: ImageService,
+              private readonly shoppingCartService: ShoppingCartService) {
   }
   ngOnInit() {
     if (this.thumbnail === undefined) { this.thumbnail = false; }

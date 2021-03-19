@@ -12,7 +12,7 @@ export class SearchCompanyComponent implements OnInit {
   companies: Company[];
   splitCompanies: Company[][];
 
-  constructor(private httpService: HttpService, private router: Router) { }
+  constructor(private readonly httpService: HttpService, private readonly router: Router) { }
 
   ngOnInit() {
     this.httpService.makeGetRequest('api/company').subscribe(data => {

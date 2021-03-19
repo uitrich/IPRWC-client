@@ -13,12 +13,12 @@ import {ShoppingCartService} from '../services/shoppingcart.service';
 export class ProductDetailViewComponent implements OnInit {
   productId: number;
   product: Product;
-  image;
-  constructor(private route: ActivatedRoute,
-              private productService: ProductService,
-              private shoppingCartService: ShoppingCartService,
-              private router: Router,
-              private imageService: ImageService) { }
+  image: string;
+  constructor(private readonly route: ActivatedRoute,
+              private readonly productService: ProductService,
+              private readonly shoppingCartService: ShoppingCartService,
+              private readonly router: Router,
+              private readonly imageService: ImageService) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {

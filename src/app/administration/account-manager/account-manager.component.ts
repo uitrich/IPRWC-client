@@ -14,7 +14,7 @@ export class AccountManagerComponent implements OnInit {
   accounts: object[] = [];
   newAccount = new Account('', '' , '', '', '', '', '' );
   selectedAccount = new Account('', '' , '', '', '', '', '' );
-  constructor(private accountService: AccountService) { }
+  constructor(private readonly accountService: AccountService) { }
 
   ngOnInit() {
     this.accountService.getAll().subscribe(data => {

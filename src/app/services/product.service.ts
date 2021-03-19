@@ -42,12 +42,12 @@ export class ProductService {
       );
   }
   getCorrectParams(page: number, search: string, category: string, company: string, bodyLocation: string) {
-    const result = new HttpParams();
-    if (page !== undefined) { result.set('page', page.toString()); }
-    if (search !== undefined) {  result.set('search', search); }
-    if (category !== undefined) {result.set('category', category); }
-    if (company !== undefined) { result.set('company', company); }
-    if (bodyLocation !== undefined) { result.set('bodyLocation', bodyLocation); }
+    let result = new HttpParams();
+    if (page !== undefined) {result = result.set('page', page.toString()); }
+    if (search !== undefined) { result = result.set('search', search); }
+    if (category !== undefined) {result = result.set('category', category); }
+    if (company !== undefined) { result = result.set('company', company); }
+    if (bodyLocation !== undefined) { result = result.set('bodyLocation', bodyLocation); }
     return result;
   }
 

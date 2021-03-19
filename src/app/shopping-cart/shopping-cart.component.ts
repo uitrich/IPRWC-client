@@ -10,11 +10,11 @@ import {Router} from '@angular/router';
   styleUrls: ['./shopping-cart.component.scss']
 })
 export class ShoppingCartComponent implements OnInit {
-  headElements = ['', 'name',  'quantity', 'price',  '', 'total price'];
+  headElements: string[] = ['', 'name',  'quantity', 'price',  '', 'total price'];
   products: Product[];
   quantities: number[];
   totalPrice = 0;
-  constructor(private httpService: HttpService, private shoppingCartService: ShoppingCartService, private router: Router) { }
+  constructor(private readonly shoppingCartService: ShoppingCartService, private readonly router: Router) { }
 
   ngOnInit() {
     this.getCart();

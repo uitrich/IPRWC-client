@@ -9,7 +9,7 @@ import {Router} from '@angular/router';
 })
 export class CategoryHeaderComponent {
 
-  constructor(private router: Router) { }
+  constructor(private readonly router: Router) { }
 
   category(id: number) {
     this.router.navigate(['/search'], { queryParams: { category: id } });

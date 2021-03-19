@@ -17,7 +17,9 @@ export class HeaderComponent implements OnInit {
   admin = false;
   shoppingCartQuantity = 0;
 
-  constructor(private router: Router, private authenticationService: AuthenticationService, private shoppingCartService: ShoppingCartService) { }
+  constructor(private readonly router: Router,
+              private readonly authenticationService: AuthenticationService,
+              private readonly shoppingCartService: ShoppingCartService) { }
 
   ngOnInit() {
     this.loggedInSub = this.authenticationService.loggedInStatusChanged.subscribe((status) => {

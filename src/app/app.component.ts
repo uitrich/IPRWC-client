@@ -8,7 +8,7 @@ import {AuthenticationService} from './services/authentication.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'SoftiApp';
+
   constructor(public router: Router, private authService: AuthenticationService) {
   }
 
