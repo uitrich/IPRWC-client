@@ -1,38 +1,34 @@
 import {Injectable} from '@angular/core';
 import {HttpService} from './http.service';
 import {Product} from '../model/Product.model';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-  constructor(private httpService: HttpService, private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient) {
   }
 
-  getAll(page: number, category: string, company: string, bodyLocation: string, search) {
-    const categoryString = category !== '' ? '&category=' + category : '';
-    const companyString = company !== '' ? '&company=' + company : '';
-    const bodyLocationString = bodyLocation !== '' ? '&body_location=' + bodyLocation : '';
-    const searchString = search !== '' ? '&search=' + search : '';
-    return this.httpService.makeGetRequest('api/product?page='
-      + page + searchString + categoryString + companyString + bodyLocationString + '&page-size=30');
-  }
   getAllAdmin() {
     return this.httpClient.get<Product[]>(environment.apiUrl + 'api/product/admin');
   }
 
   get(id: number) {
-    return this.httpService.makeGetRequest('api/product/' + id);
+    return this.httpClient.get<Product>(environment.apiUrl + 'api/product/' + id);
+  }
+
+  getTop(featuredAmount) {
+    return this.httpClient.get<Product[]>('api/product/top/' + 3)
   }
 
   post(product: Product) {
-    return this.httpService.makePostRequest('api/product', this.toNewObject(product));
+    return this.httpClient.post(environment.apiUrl + 'api/product', this.toNewObject(product));
   }
 
   put(product: Product) {
-    return this.httpService.makePutRequest('api/product', this.toObject(product));
+    return this.httpClient.put(environment.apiUrl + 'api/product', this.toObject(product));
   }
 
   delete(id: number) {
@@ -40,11 +36,26 @@ export class ProductService {
     return this.httpClient.delete(environment.apiUrl + 'api/product/' + id);
   }
 
+  search(page: number, search: string, category: string, company: string, bodyLocation: string ) {
+    return this.httpClient.get(environment.apiUrl + 'api/product',
+      {params: this.getCorrectParams(page, search, category, company, bodyLocation)}
+      );
+  }
+  getCorrectParams(page, search, category, company, bodyLocation) {
+    const result = new HttpParams();
+    if (page === undefined) { result.set('page', page.toString()); }
+    if (page === undefined) {  result.set('search', search); }
+    if (page === undefined) { result.set('category', category); }
+    if (page === undefined) { result.set('company', company); }
+    if (page === undefined) { result.set('bodyLocation', bodyLocation); }
+    return result;
+  }
+
   toObject(product: Product) {
     let object = {
       name: product.name,
       price: product.price,
-      body_location: product.bodyLocation,
+      bodyLocation: product.bodyLocation,
       category: product.category,
       company: product.company,
       id: product.id,
@@ -57,7 +68,7 @@ export class ProductService {
     return {
       name: product.name,
       price: product.price,
-      body_location: {id: product.bodyLocation.id, name: product.bodyLocation.name},
+      bodyLocation: {id: product.bodyLocation.id, name: product.bodyLocation.name},
       category: {id: product.category.id, name: product.category.name},
       company: {id: product.company.id, name: product.company.name},
       image: product.image

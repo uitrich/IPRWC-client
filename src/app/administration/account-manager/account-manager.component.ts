@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AccountService} from '../../services/account.service';
 import {Product} from '../../model/Product.model';
 import {Account} from '../../model/Account.model';
+import {MDBModalRef} from 'angular-bootstrap-md';
 
 @Component({
   selector: 'app-account-manager',
@@ -22,7 +23,7 @@ export class AccountManagerComponent implements OnInit {
     });
   }
 
-  remove(sure: any) {
+  remove(sure: MDBModalRef) {
     this.accountService.delete(this.selectedAccount.mailAddress).subscribe(data => sure.hide());
     this.accountService.getAll().subscribe(data => this.accounts = data);
   }

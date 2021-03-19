@@ -5,6 +5,7 @@ import {Account} from '../model/Account.model';
 import {HttpClient} from '@angular/common/http';
 import {Company} from '../model/Company.model';
 import {environment} from '../../environments/environment';
+import {encode} from 'punycode';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class AccountService {
   getAll() { return this.httpClient.get<Object[]>(environment.apiUrl + 'api/account/admin'); }
 
   get(mailAdress: string) {
-    return this.httpClient.get<Account>(environment.apiUrl + 'api/account/admin/' + mailAdress);
+    return this.httpClient.get<Account>(environment.apiUrl + 'api/account/admin/' + encodeURI(mailAdress));
   }
 
   post(account) {
@@ -27,6 +28,6 @@ export class AccountService {
   }
 
   delete(mailAdress: string) {
-    return this.httpClient.delete(environment.apiUrl + 'api/account/admin/delete/' + mailAdress);
+    return this.httpClient.delete(environment.apiUrl + 'api/account/admin/delete/' + encode(mailAdress));
   }
 }

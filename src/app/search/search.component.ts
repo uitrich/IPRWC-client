@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {HttpService} from '../services/http.service';
 import {ActivatedRoute} from '@angular/router';
 import {Product} from '../model/Product.model';
+import {ProductService} from '../services/product.service';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class SearchComponent implements OnInit {
   bodyLocation: string;
   company: string;
   loaded = false;
-  constructor(private httpService: HttpService, private route: ActivatedRoute) {
+  constructor(private httpService: HttpService, private route: ActivatedRoute, private productService: ProductService) {
   }
   message: number;
   headervalue: number | string;
@@ -41,12 +42,7 @@ export class SearchComponent implements OnInit {
   }
   getProducts(page: number) {
     this.images = [];
-    const categoryString = this.category !== undefined ? '&category=' + this.category : '';
-    const companyString = this.company !== undefined ? '&company=' + this.company : '';
-    const bodyLocationString = this.bodyLocation !== undefined ? '&bodyLocation=' + this.bodyLocation : '';
-    const searchString = this.search !== undefined && this.search !== '' ? '&search=' + this.search : '';
-    this.httpService.makeGetRequest('api/product?page=' + page +
-      searchString + categoryString + companyString + bodyLocationString).subscribe(data => {
+    this.productService.search(page, this.search, this.category, this.company, this.bodyLocation).subscribe(data => {
         const unordered = data['data'] as Product[];
         const firstProduct = unordered[0];
         this.length = data['totalCount'];

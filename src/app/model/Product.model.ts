@@ -84,7 +84,7 @@ export class Product {
       name: this.name,
       id: this.id,
       image: this.image,
-      body_location: this.bodyLocation,
+      bodyLocation: this.bodyLocation,
       company: this.company,
       category: this.category,
       price: this.price

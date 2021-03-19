@@ -11,6 +11,7 @@ import {CategoryService} from '../../services/category.service';
 import {BodyLocationService} from '../../services/bodyLocation.service';
 import {Category} from '../../model/Category.model';
 import {element} from 'protractor';
+import {MDBModalRef} from 'angular-bootstrap-md';
 
 @Component({
   selector: 'app-product-manager',
@@ -75,8 +76,8 @@ export class ProductManagerComponent implements OnInit {
     });
   }
 
-  update() {
-    this.productService.put(this.selectedProduct).subscribe(data => {console.log(data); });
+  update(edit: MDBModalRef) {
+    this.productService.put(this.selectedProduct).subscribe(data => edit.hide());
   }
 
   onFileChangesNew(event: any) {

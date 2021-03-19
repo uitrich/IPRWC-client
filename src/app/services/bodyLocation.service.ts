@@ -18,12 +18,12 @@ export class BodyLocationService {
     return this.httpClient.get<BodyLocation>(environment.apiUrl + 'api/bodylocation/' + id);
   }
 
-  post(body_location: BodyLocation) {
-    return this.httpClient.post(environment.apiUrl + 'api/bodylocation', {id: body_location.id, name: body_location.name});
+  post(bodyLocation: BodyLocation) {
+    return this.httpClient.post(environment.apiUrl + 'api/bodylocation', {id: bodyLocation.id, name: bodyLocation.name});
   }
 
-  put(body_location: BodyLocation) {
-    return this.httpClient.put(environment.apiUrl + 'api/bodylocation', {id: body_location.id, name: body_location.name});
+  put(bodyLocation: BodyLocation) {
+    return this.httpClient.put(environment.apiUrl + 'api/bodylocation', {id: bodyLocation.id, name: bodyLocation.name});
   }
 
   delete(id: number) {

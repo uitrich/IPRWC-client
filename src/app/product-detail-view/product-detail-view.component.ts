@@ -29,7 +29,6 @@ export class ProductDetailViewComponent implements OnInit {
         if (this.productId === undefined || this.product === undefined) {
           this.router.navigate(['']);
         }
-        debugger;
         this.image = this.product.image;
         this.imageService.createImageFromBlob(this.imageService.convertFromBase64(this.image.split(',')[1]));
       });

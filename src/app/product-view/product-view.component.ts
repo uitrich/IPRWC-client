@@ -15,8 +15,7 @@ export class ProductViewComponent implements OnInit {
   @Input() product: Product = null;
   @Input() image;
   @Input() thumbnail: boolean;
-  constructor(private httpService: HttpService,
-              private route: ActivatedRoute,
+  constructor(private route: ActivatedRoute,
               private router: Router,
               private imageService: ImageService,
               private shoppingCartService: ShoppingCartService) {
@@ -27,7 +26,7 @@ export class ProductViewComponent implements OnInit {
   }
 
   addToShoppingCart(id: number) {
-    this.httpService.makePostRequest( 'api/shoppingcart/' + id, '').subscribe(data => {
+    this.shoppingCartService.post( id).subscribe(data => {
       this.router.navigate(['shoppingcart']);
     });
   }
