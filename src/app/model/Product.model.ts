@@ -1,21 +1,21 @@
-import {Body_Location} from './Body_Location.model';
+import {BodyLocation} from './BodyLocation.model';
 import {Category} from './Category.model';
 import {Company} from './Company.model';
 
 export class Product {
   private _name: string;
   private _price: number;
-  private _body_location: Body_Location;
+  private _bodyLocation: BodyLocation;
   private _category: Category;
   private _company: Company;
   private _id: number;
   private _image: string;
   private _quantity = 1;
 
-  constructor(name, price, body_location, category, company, id, image) {
+  constructor(name, price, bodyLocation, category, company, id, image) {
     this._name = name;
     this._price = price;
-    this._body_location = body_location;
+    this._bodyLocation = bodyLocation;
     this._category = category;
     this._company = company;
     this._id = id;
@@ -49,12 +49,12 @@ export class Product {
   set category(value: Category) {
     this._category = value;
   }
-  get body_location(): Body_Location {
-    return this._body_location;
+  get bodyLocation(): BodyLocation {
+    return this._bodyLocation;
   }
 
-  set body_location(value: Body_Location) {
-    this._body_location = value;
+  set bodyLocation(value: BodyLocation) {
+    this._bodyLocation = value;
   }
   get price(): number {
     return this._price;
@@ -84,7 +84,7 @@ export class Product {
       name: this.name,
       id: this.id,
       image: this.image,
-      body_location: this.body_location,
+      body_location: this.bodyLocation,
       company: this.company,
       category: this.category,
       price: this.price

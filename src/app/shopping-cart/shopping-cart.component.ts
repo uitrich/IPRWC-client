@@ -47,8 +47,9 @@ export class ShoppingCartComponent implements OnInit {
     );
   }
   updateQuantity(id: number, index,  event: any) {
-    this.shoppingCartService.post(id, event.target.value).subscribe(data => {
+    this.shoppingCartService.postQty(id, event.target.value).subscribe(data => {
       this.products[index].quantity = data as number;
+      this.getQuantity();
     });
   }
   getSubSubTotal(product: Product) {

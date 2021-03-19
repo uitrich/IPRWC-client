@@ -25,7 +25,7 @@
       <td>{{p.id}}</td>
       <td>{{p.name}}</td>
       <td>{{p.category?.name}}</td>
-      <td>{{p.body_location?.name}}</td>
+      <td>{{p.bodyLocation?.name}}</td>
       <td>{{p.company?.name}}</td>
       <td>{{p.price.toFixed(2)}}</td>
       <td class="tableImage"><app-product-view [thumbnail]="true" [image]="p.image" [product]="p"></app-product-view></td>
@@ -83,10 +83,10 @@
           <label style="display: block">
             Body Location:
             <input class="form-control"
-                   [ngClass]="{'catExists' : bodyLocations.includes(selectedProduct.body_location),
-                 'catNotExists': !bodyLocations.includes(selectedProduct.body_location)}"
-                   type="text" value="{{selectedProduct.body_location?.name}}"
-                   [(ngModel)]="selectedProduct.body_location.name">
+                   [ngClass]="{'catExists' : bodyLocations.includes(selectedProduct.bodyLocation),
+                 'catNotExists': !bodyLocations.includes(selectedProduct.bodyLocation)}"
+                   type="text" value="{{selectedProduct.bodyLocation?.name}}"
+                   [(ngModel)]="selectedProduct.bodyLocation.name">
           </label>
           <label style="display: block">
             price:
@@ -130,7 +130,7 @@
           </label>
           <label style="display: block">
             Body Location:
-            <input class="form-control" type="text" value="{{newProduct.body_location.name}}" [(ngModel)]="newProduct.body_location.name">
+            <input class="form-control" type="text" value="{{newProduct.bodyLocation.name}}" [(ngModel)]="newProduct.bodyLocation.name">
           </label>
           <label style="display: block">
             <input class="form-control" type="text" value="{{newProduct.price}}" [(ngModel)]="newProduct.price">

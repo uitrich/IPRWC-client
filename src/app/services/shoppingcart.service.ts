@@ -30,9 +30,12 @@ export class ShoppingCartService {
     return this.httpClient.delete(environment.apiUrl + 'api/shoppingcart/full');
   }
 
-  post(id: number, qty: any) {
+  postQty(id: number, qty: any) {
     this.changeEmitter.emit(true);
     return this.httpClient.post(environment.apiUrl + 'api/shoppingcart/updatequantity/' + id + '/' + qty, '');
   }
-
+  post(id: number) {
+    this.changeEmitter.emit(true);
+    return this.httpClient.post( environment.apiUrl + 'api/shoppingcart/' + id, '');
+  }
 }

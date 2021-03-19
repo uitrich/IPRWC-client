@@ -1,4 +1,4 @@
-export class Body_Location {
+export class BodyLocation {
   get id() {
     return this._id;
   }

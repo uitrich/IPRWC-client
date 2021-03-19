@@ -18,7 +18,7 @@ export class CategoryHeaderComponent implements OnInit {
     this.router.navigate(['/search'], { queryParams: { category: id } });
   }
   bodyLocation(id: number) {
-    this.router.navigate(['/search'], { queryParams: { body_location: id } });
+    this.router.navigate(['/search'], { queryParams: { bodylocation: id } });
   }
   company(id: number) {
     this.router.navigate(['/search'], { queryParams: { company: id } });

@@ -25,6 +25,7 @@ import {AlifeFileToBase64Module} from 'alife-file-to-base64';
 import {AdministrationModule} from './administration/administration.module';
 import {AdministrationRoutingModule} from './administration/administration-routing.module';
 import {ProductViewModule} from './product-view/product-view.module';
+import { ProductDetailViewComponent } from './product-detail-view/product-detail-view.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import {ProductViewModule} from './product-view/product-view.module';
     CategoryHeaderComponent,
     ShoppingCartComponent,
     SearchCompanyComponent,
+    ProductDetailViewComponent,
   ],
   imports: [
     MDBBootstrapModule.forRoot(),

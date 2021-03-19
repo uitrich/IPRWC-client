@@ -14,9 +14,9 @@ export class SearchComponent implements OnInit {
   images = [];
   length: number;
   search: string;
-  category: number;
-  bodyLocation: number;
-  company: number;
+  category: string;
+  bodyLocation: string;
+  company: string;
   loaded = false;
   constructor(private httpService: HttpService, private route: ActivatedRoute) {
   }
@@ -39,14 +39,11 @@ export class SearchComponent implements OnInit {
       this.getProducts(1);
     });
   }
-  populateImages(data: Object) {
-
-  }
   getProducts(page: number) {
     this.images = [];
     const categoryString = this.category !== undefined ? '&category=' + this.category : '';
     const companyString = this.company !== undefined ? '&company=' + this.company : '';
-    const bodyLocationString = this.bodyLocation !== undefined ? '&body_location=' + this.bodyLocation : '';
+    const bodyLocationString = this.bodyLocation !== undefined ? '&bodyLocation=' + this.bodyLocation : '';
     const searchString = this.search !== undefined && this.search !== '' ? '&search=' + this.search : '';
     this.httpService.makeGetRequest('api/product?page=' + page +
       searchString + categoryString + companyString + bodyLocationString).subscribe(data => {
@@ -60,7 +57,7 @@ export class SearchComponent implements OnInit {
         if (this.category !== undefined) { this.headervalue = 'Category: ' + firstProduct.category.name; this.searchCompany = false; }
         if (this.company !== undefined) { this.headervalue = 'Company: ' + firstProduct.company.name; this.searchCompany = true; }
         if (this.bodyLocation !== undefined) {
-          this.headervalue = 'Body Location: ' + firstProduct.body_location.name; this.searchCompany = false;
+          this.headervalue = 'Body Location: ' + firstProduct.bodyLocation.name; this.searchCompany = false;
         }
         this.products = unordered;
         this.loaded = true;

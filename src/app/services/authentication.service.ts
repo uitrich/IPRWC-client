@@ -6,7 +6,7 @@ import {BehaviorSubject, of, Subject} from 'rxjs';
 import {Router} from '@angular/router';
 import {CookieService} from 'ngx-cookie-service';
 import {Account} from '../model/Account.model';
-import {SessionState} from '../model/session-state.model';
+import {SessionState} from '../model/SessionState.model';
 
 @Injectable({
   providedIn: 'root'

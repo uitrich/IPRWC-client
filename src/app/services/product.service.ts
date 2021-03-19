@@ -44,7 +44,7 @@ export class ProductService {
     let object = {
       name: product.name,
       price: product.price,
-      body_location: product.body_location,
+      body_location: product.bodyLocation,
       category: product.category,
       company: product.company,
       id: product.id,
@@ -57,7 +57,7 @@ export class ProductService {
     return {
       name: product.name,
       price: product.price,
-      body_location: {id: product.body_location.id, name: product.body_location.name},
+      body_location: {id: product.bodyLocation.id, name: product.bodyLocation.name},
       category: {id: product.category.id, name: product.category.name},
       company: {id: product.company.id, name: product.company.name},
       image: product.image

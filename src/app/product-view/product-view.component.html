@@ -5,8 +5,8 @@
     </div>
     <div class="card-body row">
       <div class="col-lg-9 col-md-12 col-sm-12">
-        <h5 class="text-truncate-size">{{product ? product?.name : null}}</h5>
-        <p class="text-truncate-size">{{product?.company?.name}} | {{product?.body_location?.name}}</p>
+        <a routerLink="/product/{{product.id}}"><h5 class="text-truncate-size">{{product ? product?.name : null}}</h5></a>
+        <p class="text-truncate-size">{{product?.company?.name}} | {{product?.bodyLocation?.name}}</p>
         <hr>
         <p>${{product?.price.toFixed(2)}}</p>
       </div>

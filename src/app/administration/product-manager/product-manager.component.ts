@@ -1,5 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {Body_Location} from '../../model/Body_Location.model';
+import {BodyLocation} from '../../model/BodyLocation.model';
 import {Account} from '../../model/Account.model';
 import {Company} from '../../model/Company.model';
 import {ProductService} from '../../services/product.service';
@@ -23,10 +23,10 @@ export class ProductManagerComponent implements OnInit {
   images = [];
   companies: Company[];
   categories: Category[];
-  bodyLocations: Body_Location[];
+  bodyLocations: BodyLocation[];
 
-  newProduct: Product = new Product('', 0.00, new Body_Location(0, ''), new Category(0, ''), new Company(0, ''), 0, '');
-  selectedProduct = new Product('', 0.00, new Body_Location(0, ''), new Category(0, ''), new Company(0, ''), 0, '');
+  newProduct: Product = new Product('', 0.00, new BodyLocation(0, ''), new Category(0, ''), new Company(0, ''), 0, '');
+  selectedProduct = new Product('', 0.00, new BodyLocation(0, ''), new Category(0, ''), new Company(0, ''), 0, '');
 
   newProductName: string;
   oldImage: string;
@@ -38,8 +38,8 @@ export class ProductManagerComponent implements OnInit {
               private companyService: CompanyService,
               private categoryService: CategoryService,
               private bodyLocationService: BodyLocationService) {
-    this.newProduct = new Product('', 0.00, new Body_Location(0, ''), new Category(0, ''), new Company(0, ''), 0, '');
-    this.selectedProduct = new Product('', 0.00, new Body_Location(0, ''), new Category(0, ''), new Company(0, ''), 0, '');
+    this.newProduct = new Product('', 0.00, new BodyLocation(0, ''), new Category(0, ''), new Company(0, ''), 0, '');
+    this.selectedProduct = new Product('', 0.00, new BodyLocation(0, ''), new Category(0, ''), new Company(0, ''), 0, '');
   }
 
   ngOnInit() {
