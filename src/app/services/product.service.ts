@@ -24,7 +24,7 @@ export class ProductService {
   }
 
   post(product: Product) {
-    return this.httpClient.post(environment.apiUrl + 'api/product', this.toNewObject(product));
+    return this.httpClient.post<Product>(environment.apiUrl + 'api/product', this.toNewObject(product));
   }
 
   put(product: Product) {

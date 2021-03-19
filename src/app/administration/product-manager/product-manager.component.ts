@@ -100,7 +100,7 @@ export class ProductManagerComponent implements OnInit {
     this.newProduct.image = null;
   }
 
-  post() {
-    this.productService.post(this.newProduct).subscribe(data => { console.log(data); this.getAll(); });
+  post(modal: MDBModalRef) {
+    this.productService.post(this.newProduct).subscribe(data => { debugger; this.products.push(data); modal.hide(); });
   }
 }

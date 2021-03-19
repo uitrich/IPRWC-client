@@ -6,7 +6,7 @@
     </div>
   </div>
 
-  <table mdbTable>
+  <table class="table">
     <thead>
     <tr>
       <th scope="col">Id</th>
@@ -21,7 +21,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr mdbTableCol *ngFor="let p of products; let i = index" id="{{p.id}}">
+    <tr *ngFor="let p of products; let i = index" id="{{p.id}}">
       <td>{{p.id}}</td>
       <td>{{p.name}}</td>
       <td>{{p.category?.name}}</td>
@@ -112,8 +112,8 @@
           <button type="button" class="close pull-right" aria-label="Close" (click)="add.hide()">
             <span aria-hidden="true">×</span>
           </button>
-          <h4 class="modal-title w-100" id="myModalLabel">Updating:  </h4>
-          <h4> {{newProduct.name}}</h4>
+          <h4 class="modal-title">Updating: {{newProduct.name}}</h4>
+          <h4> </h4>
         </div>
         <div class="modal-body">
           <label style="display: block">
@@ -121,15 +121,15 @@
             <input class="form-control" type="text" value="{{newProduct.name}} " [(ngModel)]="newProduct.name">
           </label>
           <label style="display: block">
-            Category:
+            Category name:
             <input class="form-control" type="text" value="{{newProduct.category.name}}" [(ngModel)]="newProduct.category.name">
           </label>
           <label style="display: block">
-            Company:
+            Company name:
             <input class="form-control" type="text" value="{{newProduct.company.name}}" [(ngModel)]="newProduct.company.name">
           </label>
           <label style="display: block">
-            Body Location:
+            Body Location name:
             <input class="form-control" type="text" value="{{newProduct.bodyLocation.name}}" [(ngModel)]="newProduct.bodyLocation.name">
           </label>
           <label style="display: block">
@@ -141,7 +141,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="add.hide();" mdbWavesEffect>Close</button>
-          <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="post()" mdbWavesEffect>Save changes</button>
+          <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="post(add)" mdbWavesEffect>Save changes</button>
         </div>
       </div>
     </div>
