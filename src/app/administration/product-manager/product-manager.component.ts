@@ -80,14 +80,14 @@ export class ProductManagerComponent implements OnInit {
   }
 
   onFileChangesNew(event: any) {
-    const image: string = event[0]['base64'];
+    const image: string = event[0].base64;
     this.oldImage = this.newProduct.image;
     this.newProduct.image = image;
     this.imageHasChanged = true;
   }
 
   onFileChanges(event: any) {
-    const image: string = event[0]['base64'];
+    const image: string = event[0].base64;
     this.oldImage = this.selectedProduct.image;
     this.selectedProduct.image = image;
     this.imageHasChanged = true;

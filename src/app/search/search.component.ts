@@ -15,7 +15,7 @@ export class SearchComponent implements OnInit {
   length: number;
   search: string;
   category: number;
-  body_location: number;
+  bodyLocation: number;
   company: number;
   loaded = false;
   constructor(private httpService: HttpService, private route: ActivatedRoute) {
@@ -32,7 +32,7 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
       this.category = params['category'];
-      this.body_location = params['bodylocation'];
+      this.bodyLocation = params['bodylocation'];
       this.company = params['company'];
       this.search = params["search"];
       this.searchCompany = params["companySearch"];
@@ -46,7 +46,7 @@ export class SearchComponent implements OnInit {
     this.images = [];
     const categoryString = this.category !== undefined ? '&category=' + this.category : '';
     const companyString = this.company !== undefined ? '&company=' + this.company : '';
-    const bodyLocationString = this.body_location !== undefined ? '&body_location=' + this.body_location : '';
+    const bodyLocationString = this.bodyLocation !== undefined ? '&body_location=' + this.bodyLocation : '';
     const searchString = this.search !== undefined && this.search !== '' ? '&search=' + this.search : '';
     this.httpService.makeGetRequest('api/product?page=' + page +
       searchString + categoryString + companyString + bodyLocationString).subscribe(data => {
@@ -59,7 +59,7 @@ export class SearchComponent implements OnInit {
         this.headervalue = this.search;
         if (this.category !== undefined) { this.headervalue = 'Category: ' + firstProduct.category.name; this.searchCompany = false; }
         if (this.company !== undefined) { this.headervalue = 'Company: ' + firstProduct.company.name; this.searchCompany = true; }
-        if (this.body_location !== undefined) {
+        if (this.bodyLocation !== undefined) {
           this.headervalue = 'Body Location: ' + firstProduct.body_location.name; this.searchCompany = false;
         }
         this.products = unordered;

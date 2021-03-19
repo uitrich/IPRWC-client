@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpService} from '../services/http.service';
 import {Product} from '../model/Product.model';
+import {ShoppingCartService} from '../services/shoppingcart.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -12,47 +14,50 @@ export class ShoppingCartComponent implements OnInit {
   products: Product[];
   quantities: number[];
   totalPrice = 0;
-  constructor(private httpService: HttpService) { }
+  constructor(private httpService: HttpService, private shoppingCartService: ShoppingCartService, private router: Router) { }
 
   ngOnInit() {
-    this.httpService.makeGetRequest('api/shoppingcart').subscribe(data => {
+    this.getCart();
+  }
+  getCart() {
+    this.shoppingCartService.get().subscribe(data => {
       this.products = data as Product[];
-      console.log(this.products);
       this.getQuantity();
     });
   }
-
   remove(id: number) {
     this.quantities = [];
-    this.httpService.makeDeleteRequest('api/shoppingcart/' + id).subscribe(data => {
-      this.products = data as Product[];
-      this.getQuantity();
-      this.totalPrice = 0;
-      this.products.forEach(value => {
-        this.totalPrice += (value.quantity * value.price);
-      });
+    this.shoppingCartService.delete(id).subscribe(data => {
+      this.getCart();
     });
   }
 
   getQuantity() {
     this.quantities = [];
-    this.httpService.makeGetRequest('api/shoppingcart/quantity').subscribe(
+    this.totalPrice = 0;
+    return this.shoppingCartService.getQuantity().subscribe(
       data => {
         const quantities = data as number[][];
         for (let i = 0; i <  this.products.length; i++) {
           this.products[i].quantity = quantities[i][0];
-          this.totalPrice = this.products[i].price * quantities[i][0];
+          this.totalPrice += this.products[i].price * quantities[i][0];
           this.quantities.push(this.products[i].quantity);
         }
       }
     );
   }
   updateQuantity(id: number, index,  event: any) {
-    this.httpService.makePostRequest('api/shoppingcart/updatequantity/' + id + '/' + event.target.value, '').subscribe(data => {
+    this.shoppingCartService.post(id, event.target.value).subscribe(data => {
       this.products[index].quantity = data as number;
     });
   }
   getSubSubTotal(product: Product) {
     return (product.quantity * product.price).toFixed(2);
+  }
+  deleteAll() {
+    this.shoppingCartService.deleteAll().subscribe(data => {
+      this.shoppingCartService.changeEmitter.emit(true);
+      this.router.navigate(['']);
+    });
   }
 }

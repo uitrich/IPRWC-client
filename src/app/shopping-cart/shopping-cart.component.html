@@ -1,4 +1,5 @@
-<div class="divider-new" style="opacity: 0"></div>
+<<div class="container-fluid">
+  <h2 class="heading">Shopping cart</h2>
 <table mdbTable>
   <thead>
   <tr>
@@ -11,10 +12,31 @@
     <td>{{p.name}}</td>
     <td><input type="number" value="{{quantities[i]}}" (input)="updateQuantity(p.id, i, $event)" min="1" max="100"/></td>
     <td>{{p.price.toFixed(2)}}</td>
-    <td><button class="btn red" (click)="remove(p.id)">remove</button></td>
+    <td><button class="btn btn-outline-danger" (click)="remove(p.id)">remove</button></td>
     <td>$ {{(p.quantity * p.price).toFixed(2)}}</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>Total</td>
+    <td>${{totalPrice.toFixed(2)}}</td>
   </tr>
   </tbody>
 </table>
-<div class="divider-new"> </div>
-<div class="-align-right">{{totalPrice.toFixed(2)}}</div>
+  <button class="wide btn btn-outline-primary" (click)="order.show()">Order Products</button>
+
+</div>
+<div mdbModal #order="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title w-100" id="myModalLabel">Are you sure you want to Order these products: </h4>
+      </div>
+      <p *ngFor="let p of products">{{p.name}}</p>
+      <a class="btn btn-outline-success" (click)="this.deleteAll()">yes</a>
+      <a class="btn btn-outline-danger" routerLink="">no</a>
+    </div>
+  </div>
+</div>

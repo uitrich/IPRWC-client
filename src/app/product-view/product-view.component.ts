@@ -12,7 +12,7 @@ import {environment} from '../../environments/environment';
 export class ProductViewComponent implements OnInit {
   @Input() product: Product = null;
   @Input() image;
-  @Input()thumbnail: boolean;
+  @Input() thumbnail: boolean;
   constructor(private httpService: HttpService, private route: ActivatedRoute, private router: Router) {
   }
   ngOnInit() {

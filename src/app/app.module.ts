@@ -19,10 +19,12 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import {CookieService} from 'ngx-cookie-service';
 import {RequestInterceptorService} from './shared/request-interceptor.service';
 import { SearchCompanyComponent } from './search/search-company/search-company.component';
-import { AdminComponent } from './admin/admin.component';
-import { ProductManagerComponent } from './admin/product-manager/product-manager.component';
-import { AccountManagerComponent } from './admin/account-manager/account-manager.component';
+import { ProductManagerComponent } from './administration/product-manager/product-manager.component';
+import { AccountManagerComponent } from './administration/account-manager/account-manager.component';
 import {AlifeFileToBase64Module} from 'alife-file-to-base64';
+import {AdministrationModule} from './administration/administration.module';
+import {AdministrationRoutingModule} from './administration/administration-routing.module';
+import {ProductViewModule} from './product-view/product-view.module';
 
 @NgModule({
   declarations: [
@@ -32,14 +34,10 @@ import {AlifeFileToBase64Module} from 'alife-file-to-base64';
     SearchComponent,
     LoginComponent,
     RegisterComponent,
-    ProductViewComponent,
     PaginationComponent,
     CategoryHeaderComponent,
     ShoppingCartComponent,
     SearchCompanyComponent,
-    AdminComponent,
-    ProductManagerComponent,
-    AccountManagerComponent
   ],
   imports: [
     MDBBootstrapModule.forRoot(),
@@ -48,7 +46,9 @@ import {AlifeFileToBase64Module} from 'alife-file-to-base64';
     HttpClientModule,
     FormsModule,                             // <========== Add this line!
     ReactiveFormsModule,
-    AlifeFileToBase64Module
+    AlifeFileToBase64Module,
+    AdministrationModule,
+    ProductViewModule
   ],
   providers: [
     CookieService,
@@ -57,6 +57,9 @@ import {AlifeFileToBase64Module} from 'alife-file-to-base64';
       useClass: RequestInterceptorService,
       multi: true
     }
+  ],
+  exports: [
+    ProductViewComponent
   ],
   bootstrap: [AppComponent]
 })

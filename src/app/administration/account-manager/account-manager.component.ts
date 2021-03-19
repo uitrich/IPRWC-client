@@ -10,7 +10,7 @@ import {Account} from '../../model/Account.model';
 })
 export class AccountManagerComponent implements OnInit {
   loaded = false;
-  accounts: Object[] = [];
+  accounts: object[] = [];
   newAccount = new Account('', '' , '', '', '', '', '' );
   selectedAccount = new Account('', '' , '', '', '', '', '' );
   constructor(private accountService: AccountService) { }

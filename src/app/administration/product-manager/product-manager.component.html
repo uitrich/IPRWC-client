@@ -1,0 +1,149 @@
+<div *ngIf="loaded">
+  <div class="input-group mb-3">
+    <input type="text" class="form-control" placeholder="Voeg product toe" aria-label="Voeg tag toe" aria-describedby="basic-addon2" [(ngModel)]="newProduct.name">
+    <div class="input-group-append">
+      <button class="btn btn-outline-secondary" type="button" (click)="add.show()">+</button>
+    </div>
+  </div>
+
+  <table mdbTable>
+    <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Category</th>
+      <th scope="col">Body Location</th>
+      <th scope="col">Company</th>
+      <th scope="col">price</th>
+      <th scope="col">image</th>
+      <th scope="col">edit</th>
+      <th scope="col">remove</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr mdbTableCol *ngFor="let p of products; let i = index" id="{{p.id}}">
+      <td>{{p.id}}</td>
+      <td>{{p.name}}</td>
+      <td>{{p.category?.name}}</td>
+      <td>{{p.body_location?.name}}</td>
+      <td>{{p.company?.name}}</td>
+      <td>{{p.price.toFixed(2)}}</td>
+      <td class="tableImage"><app-product-view [thumbnail]="true" [image]="p.image" [product]="p"></app-product-view></td>
+      <td><button class="emptyButton btn " (click)="selectedProduct = p; edit.show()"><i class="fas fa-edit emptyButton blue"></i></button></td>
+      <td><button class="emptyButton btn " (click)="selectedProduct = p; sure.show()"><i class="far fa-times-circle emptyButton red"></i></button></td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div mdbModal #sure="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document" *ngIf="selectedProduct">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close pull-right" aria-label="Close" (click)="sure.hide()">
+            <span aria-hidden="true">×</span>
+          </button>
+          <h4 class="modal-title w-100" id="myModalLabel">Are you sure you want to delete: </h4>
+          <h4> {{selectedProduct.name}}</h4>
+        </div>
+        <div class="modal-footer">
+          <button type="button" mdbBtn color="blue" class="waves-light" aria-label="Close" (click)="sure.hide(); " mdbWavesEffect>Close</button>
+          <button type="button" mdbBtn color="red" class="relative waves-light" (click)="remove(selectedProduct.id); sure.hide()" mdbWavesEffect>I want to delete {{selectedProduct.name}}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div mdbModal #edit="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close pull-right" aria-label="Close" (click)="edit.hide()">
+            <span aria-hidden="true">×</span>
+          </button>
+          <h4 class="modal-title w-100" id="myModalLabel">Editing: </h4>
+          <h4> {{selectedProduct.name}}</h4>
+        </div>
+        <div class="modal-body" >
+          <label style="display: block">
+            Id:
+            <input disabled class="form-control" type="number" value="{{selectedProduct?.id}}">
+          </label>
+          <label style="display: block">
+            Name:
+            <input class="form-control" type="text" value="{{selectedProduct?.name}} " [(ngModel)]="selectedProduct.name">
+          </label>
+          <label style="display: block">
+            Category:
+            <input class="form-control" [ngClass]="(categories.includes(selectedProduct.category)?'catExists':'catNotExists')" type="text" value="{{selectedProduct.category?.name}}" [(ngModel)]="selectedProduct.category.name">
+          </label>
+          <label style="display: block">
+            Company:
+            <input class="form-control" [ngClass]="(companies.includes(selectedProduct.company)?'catExists':'catNotExists')" type="text" value="{{selectedProduct.company?.name}}" [(ngModel)]="selectedProduct.company.name">
+          </label>
+          <label style="display: block">
+            Body Location:
+            <input class="form-control"
+                   [ngClass]="{'catExists' : bodyLocations.includes(selectedProduct.body_location),
+                 'catNotExists': !bodyLocations.includes(selectedProduct.body_location)}"
+                   type="text" value="{{selectedProduct.body_location?.name}}"
+                   [(ngModel)]="selectedProduct.body_location.name">
+          </label>
+          <label style="display: block">
+            price:
+            <input class="form-control" type="text" value="{{selectedProduct.price}}" [(ngModel)]="selectedProduct.price">
+          </label>
+          <label style="display: block">
+            <input type="file" alife-file-to-base64 (onFileChanged)="onFileChanges($event)" [(fileModel)]="newImage" />
+          </label>
+          <img style="display: block; max-height: 90px" [src]="selectedProduct.image" alt="no image">
+        </div>
+        <div class="modal-footer">
+          <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="onUpdateClose(); edit.hide();" mdbWavesEffect>Close</button>
+          <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="update()" mdbWavesEffect>Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div mdbModal #add="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close pull-right" aria-label="Close" (click)="add.hide()">
+            <span aria-hidden="true">×</span>
+          </button>
+          <h4 class="modal-title w-100" id="myModalLabel">Updating:  </h4>
+          <h4> {{newProduct.name}}</h4>
+        </div>
+        <div class="modal-body">
+          <label style="display: block">
+            Name:
+            <input class="form-control" type="text" value="{{newProduct.name}} " [(ngModel)]="newProduct.name">
+          </label>
+          <label style="display: block">
+            Category:
+            <input class="form-control" type="text" value="{{newProduct.category.name}}" [(ngModel)]="newProduct.category.name">
+          </label>
+          <label style="display: block">
+            Company:
+            <input class="form-control" type="text" value="{{newProduct.company.name}}" [(ngModel)]="newProduct.company.name">
+          </label>
+          <label style="display: block">
+            Body Location:
+            <input class="form-control" type="text" value="{{newProduct.body_location.name}}" [(ngModel)]="newProduct.body_location.name">
+          </label>
+          <label style="display: block">
+            <input class="form-control" type="text" value="{{newProduct.price}}" [(ngModel)]="newProduct.price">
+          </label>
+          <label style="display: block">
+            <input type="file" alife-file-to-base64 (onFileChanged)="onFileChangesNew($event)" [(fileModel)]="newImage" />
+          </label>
+        </div>
+        <div class="modal-footer">
+          <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="add.hide();" mdbWavesEffect>Close</button>
+          <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="post()" mdbWavesEffect>Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -4,6 +4,7 @@ import {Account} from '../model/Account.model';
 import {AccountService} from '../services/account.service';
 import {HttpErrorResponse} from '@angular/common/http';
 import {Validator} from '../BackendValidatorHandler/Validator';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -16,8 +17,7 @@ export class RegisterComponent implements OnInit {
     password: false,
     mailAddress: false
   };
-  success = false;
-  constructor(private accountService: AccountService) { }
+  constructor(private accountService: AccountService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -32,7 +32,7 @@ export class RegisterComponent implements OnInit {
       houseNumber: this.account.houseNumber
     };
     this.accountService.post(account).subscribe(data => {
-        this.success = data as boolean;
+        this.router.navigate(['/login'], { queryParams: { email: account.mailAddress } });
       },
       error => {
         const err: HttpErrorResponse = error as HttpErrorResponse;

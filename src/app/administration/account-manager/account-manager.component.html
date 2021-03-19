@@ -1,0 +1,83 @@
+<div *ngIf="loaded">
+
+  <table mdbTable>
+    <thead>
+    <tr>
+      <th scope="col">first Name</th>
+      <th scope="col">last Name</th>
+      <th scope="col">mail adress</th>
+      <th scope="col">postal code</th>
+      <th scope="col">house number</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr mdbTableCol *ngFor="let p of accounts; let i = index">
+      <td>{{p['firstName']}}</td>
+      <td>{{p['lastName']}}</td>
+      <td>{{p['mailAddress']}}</td>
+      <td>{{p['postal_code']}}</td>
+      <td>{{p['house_number']}}</td>
+      <td><button class="emptyButton btn " (click)="selectedAccount = p; checkThis(); edit.show(); "><i class="fas fa-edit emptyButton blue"></i></button></td>
+      <td><button class="emptyButton btn " (click)="selectedAccount = p; sure.show()"><i class="far fa-times-circle emptyButton red"></i></button></td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div mdbModal #sure="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document" *ngIf="selectedAccount">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close pull-right" aria-label="Close" (click)="sure.hide()">
+            <span aria-hidden="true">×</span>
+          </button>
+          <h4 class="modal-title w-100" id="myModalLabel">Are you sure you want to delete: </h4>
+          <h4> {{selectedAccount.mailAddress}}</h4>
+        </div>
+        <div class="modal-footer">
+          <button type="button" mdbBtn color="blue" class="waves-light" aria-label="Close" (click)="sure.hide(); " mdbWavesEffect>Close</button>
+          <button type="button" mdbBtn color="red" class="relative waves-light" (click)="remove(sure); sure.hide()" mdbWavesEffect>I want to delete {{selectedAccount.mailAddress}}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div mdbModal #edit="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close pull-right" aria-label="Close" (click)="edit.hide()">
+            <span aria-hidden="true">×</span>
+          </button>
+          <h4 class="modal-title w-100" id="myModalLabel">Editing: </h4>
+          <h4> {{selectedAccount.mailAddress}}</h4>
+        </div>
+        <div class="modal-body" >
+          <label style="display: block">
+            First Name:
+            <input class="form-control" type="text" value="{{selectedAccount?.firstName}} " [(ngModel)]="selectedAccount.firstName">
+          </label>
+          <label style="display: block">
+            Last Name:
+            <input class="form-control" type="text" value="{{selectedAccount.lastName}}" [(ngModel)]="selectedAccount.lastName">
+          </label>
+          <label style="display: block">
+            Email:
+            <input class="form-control" type="text" value="{{selectedAccount.mailAddress}}" disabled>
+          </label>
+          <label style="display: block">
+            Postal Code:
+            <input class="form-control" type="text" value="{{selectedAccount.postalCode}}" [(ngModel)]="selectedAccount.postalCode">
+          </label>
+          <label style="display: block">
+            House Number:
+            <input class="form-control" type="text" value="{{selectedAccount.houseNumber}}" [(ngModel)]="selectedAccount.houseNumber">
+          </label>
+        </div>
+        <div class="modal-footer">
+          <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="edit.hide();" mdbWavesEffect>Close</button>
+          <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="update(edit)" mdbWavesEffect>Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

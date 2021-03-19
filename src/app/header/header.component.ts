@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthenticationService} from '../services/authentication.service';
 import {Subscription} from 'rxjs';
+import {ShoppingCartService} from '../services/shoppingcart.service';
+import {Product} from '../model/Product.model';
 
 @Component({
   selector: 'app-header',
@@ -13,8 +15,9 @@ export class HeaderComponent implements OnInit {
   loggedInSub: Subscription;
   roleChangedSub: Subscription;
   admin = false;
+  shoppingCartQuantity = 0;
 
-  constructor(private router: Router, private authenticationService: AuthenticationService) { }
+  constructor(private router: Router, private authenticationService: AuthenticationService, private shoppingCartService: ShoppingCartService) { }
 
   ngOnInit() {
     this.loggedInSub = this.authenticationService.loggedInStatusChanged.subscribe((status) => {
@@ -25,7 +28,19 @@ export class HeaderComponent implements OnInit {
       this.admin = newRole === 'Admin';
       console.log(newRole === 'Admin', newRole);
     });
+    this.shoppingCartService.changeEmitter.subscribe(value => {
+      this.shoppingCartService.get().subscribe(data => {
+        this.getQuantity();
+      });
+    });
+    this.getQuantity();
   }
+  getQuantity() {
+    this.shoppingCartService.get().subscribe(data => {
+      this.shoppingCartQuantity = (data as Product[]).length;
+    });
+  }
+
   onSubmit(event: any) {
     this.router.navigate(['/search'], { queryParams: { search: event.target.value } });
   }

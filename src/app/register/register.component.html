@@ -3,6 +3,7 @@
     <div class="card">
       <div class="card-header">Login details</div>
       <div class="card-body">
+        <p *ngIf="(ValidationBooleans.mailAddress || ValidationBooleans.password)" class="text-danger">Mistakes were made</p>
         <label class="col-12">
           Email <i class="text-danger" *ngIf="ValidationBooleans.mailAddress">this can only be an email address, for example: example@gmail.com</i>
           <input type="text" class="form-control" name="email" placeholder="Email Address" [(ngModel)]="account.mailAddress" />

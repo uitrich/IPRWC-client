@@ -1,20 +1,14 @@
 <!--Navbar-->
-<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark primary-color-dark lighten-1" [containerInside]="false">
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark primary-color lighten-1" [containerInside]="false">
 
   <!-- Navbar brand -->
-  <mdb-navbar-brand><a class="navbar-brand" href="#">Softi</a></mdb-navbar-brand>
+  <mdb-navbar-brand><a class="navbar-brand" routerLink="">Softi</a></mdb-navbar-brand>
 
   <!-- Collapsible content -->
   <links>
 
     <!-- Links -->
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link waves-light" mdbWavesEffect>Features</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link waves-light" mdbWavesEffect>Pricing</a>
-      </li>
 
     </ul>
       <form class="searchbar form-control form-inline md-form form-sm">
@@ -25,12 +19,18 @@
 
 
     <ul *ngIf="loggedIn; else login" class="navbar-nav">
-      <li class="nav-item" *ngIf="admin">
-        <a class="nav-link" routerLink="/admin">Admin</a>
+      <li class="nav-item avatar dropdown" *ngIf="admin" dropdown>
+        <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>Admin
+        </a>
+        <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
+          <a class="dropdown-item waves-light" mdbWavesEffect href="#" routerLink="/administration/product">Product</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect href="#" routerLink="/administration/account">Account</a>
+        </div>
       </li>
       <li class="nav-item">
         <a class="nav-link cart" routerLink="/shoppingcart"><i class="fas fa-shopping-cart"></i></a>
       </li>
+      <li><sup class="text-white">{{shoppingCartQuantity}}</sup></li>
       <li class="nav-item avatar dropdown" dropdown>
         <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
           </a>
