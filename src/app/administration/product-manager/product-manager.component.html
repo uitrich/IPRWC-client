@@ -70,7 +70,7 @@
           </label>
           <label style="display: block">
             Category:
-            <input class="form-control" [ngClass]="(categories.includes(selectedProduct.category)?'catExists':'catNotExists')" type="text" value="{{selectedProduct.category?.name}}" [(ngModel)]="selectedProduct.category.name">
+            <input class="form-control" [ngClass]="(categories.includes(selectedProduct.category)?'catExists':'catNotExists')" type="text" [value]=selectedProduct.category?.name [(ngModel)]="selectedProduct.category.name">
           </label>
           <label style="display: block">
             Company:
@@ -111,7 +111,7 @@
         <div class="modal-body">
           <label style="display: block">
             Name:
-            <input class="form-control" type="text" value="{{newProduct.name}} " [(ngModel)]="newProduct.name">
+            <input class="form-control" type="text" value="{{newProduct.name}}" [(ngModel)]="newProduct.name">
           </label>
           <label style="display: block">
             Category name:
