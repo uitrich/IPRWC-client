@@ -31,8 +31,8 @@ export class LoginComponent implements OnInit {
         }
       }
     );
-    this.route.paramMap.subscribe(params => {
-      this.mailAddress = params.get('email');
+    this.route.queryParams.subscribe(params => {
+      this.mailAddress = params.email;
     });
   }
   onSubmit() {
