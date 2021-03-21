@@ -38,11 +38,14 @@ export class ShoppingCartComponent implements OnInit {
     return this.shoppingCartService.getQuantity().subscribe(
       data => {
         const quantities = data as number[][];
-        for (let i = 0; i <  this.products.length; i++) {
-          this.products[i].quantity = quantities[i][0];
-          this.totalPrice += this.products[i].price * quantities[i][0];
-          this.quantities.push(this.products[i].quantity);
-        }
+        quantities.forEach(value => {
+          this.products.forEach(value1 => {
+           if (value1.id === value[1]) {
+             value1.quantity = value[0];
+             this.totalPrice += value1.price * value1.quantity;
+           }
+          });
+        });
       }
     );
   }

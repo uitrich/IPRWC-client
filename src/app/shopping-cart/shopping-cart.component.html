@@ -10,7 +10,7 @@
   <tr mdbTableCol *ngFor="let p of products; let i = index">
     <td><app-product-view [product]="p" [image]="p.image" [thumbnail]="true"></app-product-view></td>
     <td> <a routerLink="/product/{{p.id}}"><h5 class="text-truncate-size">{{p ? p?.name : null}}</h5></a></td>
-    <td><input type="number" [(ngModel)]="quantities[i]" (input)="updateQuantity(p.id, i, $event)"/></td>
+    <td><input type="number" [(ngModel)]="p.quantity" (change)="updateQuantity(p.id, i, $event)"/></td>
     <td>{{p.price.toFixed(2)}}</td>
     <td><button class="btn btn-outline-danger" (click)="remove(p.id)">remove</button></td>
     <td>$ {{(p.quantity * p.price).toFixed(2)}}</td>

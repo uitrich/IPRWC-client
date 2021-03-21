@@ -15,7 +15,7 @@ export class ProductDetailViewComponent implements OnInit {
   productId: number;
   product: Product;
   image: string;
-  loggedIn: boolean
+  loggedIn: boolean;
   constructor(private readonly route: ActivatedRoute,
               private readonly productService: ProductService,
               private readonly shoppingCartService: ShoppingCartService,
@@ -34,9 +34,12 @@ export class ProductDetailViewComponent implements OnInit {
         }
         this.image = this.product.image;
         this.imageService.createImageFromBlob(this.imageService.convertFromBase64(this.image.split(',')[1]));
-      });
+      }, error => this.router.navigate(['/']));
     });
-    this.loggedIn = this.authenticationService.loggedIn;
+    this.loggedIn = this.authenticationService.accountId !== '';
+    this.authenticationService.loggedInStatusChanged.subscribe((status) => {
+      this.loggedIn = status;
+    });
   }
 
   addToShoppingCart(id: number) {

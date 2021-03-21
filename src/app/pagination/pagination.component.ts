@@ -10,16 +10,16 @@ import {Product} from '../model/Product.model';
 })
 export class PaginationComponent {
   max = 9;
-  pagenumber = 1;
+  pageNumber = 1;
   @Input() length: number;
   @Output() messageEvent = new EventEmitter<number>();
   constructor() { }
 
   clickPage(page: number) {
-    this.pagenumber = page;
-    this.messageEvent.emit(this.pagenumber);
+    this.pageNumber = page;
+    this.messageEvent.emit(this.pageNumber);
     if (this.max >= length - 5) { return; }
     if (this.max <= 4) { return; }
-    this.max = this.pagenumber + 5;
+    this.max = this.pageNumber + 5;
   }
 }

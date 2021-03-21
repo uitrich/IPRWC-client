@@ -4,6 +4,7 @@
   <h4 class="flex-center">{{headerValue}}</h4>
   <hr>
   <app-search-company *ngIf="searchCompany"></app-search-company>
+  <h3 *ngIf="products.length <= 0">Nothing was found</h3>
   <div class="row">
     <div *ngFor="let p of products; let i = index" class="col-lg-3 col-sm-12 col-md-4">
       <app-product-view *ngIf="p!= undefined && p != null" [product]="p" [image]="images[i]" [shoppingCartActive]="loggedIn"></app-product-view>
