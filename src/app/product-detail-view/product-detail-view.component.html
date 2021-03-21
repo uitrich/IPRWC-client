@@ -7,7 +7,7 @@
         <table class="table">
           <tr>
             <td class="text-primary-bold">Price</td>
-            <td>${{product?.price}}</td>
+            <td>${{product?.price.toFixed(2)}}</td>
           </tr>
           <tr>
             <td class="text-primary-bold">Category</td>
@@ -24,10 +24,17 @@
         </table>
     </div>
     <div class="card-footer">
-      <button class="btn btn-outline-primary" (click)="addToShoppingCart(product?.id)">
+      <button *ngIf="loggedIn else notLoggedIn" class="btn btn-outline-primary" (click)="addToShoppingCart(product?.id)">
         <i class="fas fa-shopping-cart"></i>
         Add to shopping cart
       </button>
+      <ng-template #notLoggedIn>
+        <a class="btn btn-outline-primary shopping-cart-button" routerLink="/login">
+          <i class="fas fa-shopping-cart"></i>
+          Log in
+        </a>
+      </ng-template>
+
     </div>
 
   </div>

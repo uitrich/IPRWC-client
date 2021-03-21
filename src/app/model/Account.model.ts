@@ -1,8 +1,6 @@
 import {Group} from './Group.model';
 
 export class Account {
-
-
   private _groups: Group[];
   private _mailAddress: string;
   private _firstName: string;
@@ -13,7 +11,13 @@ export class Account {
   private _reference : string;
   private _group: Group[];
 
-  constructor(mailAddress, firstName, password, lastName, postalCode, houseNumber, reference) {
+  constructor(mailAddress: string = '',
+              firstName: string = '',
+              password: string = '',
+              lastName: string = '',
+              postalCode: string = '',
+              houseNumber: string = '',
+              reference: string = '') {
     this._mailAddress = mailAddress;
     this._firstName = firstName;
     this._lastName = lastName;

@@ -11,14 +11,14 @@
     </tr>
     </thead>
     <tbody>
-    <tr mdbTableCol *ngFor="let p of accounts; let i = index">
-      <td>{{p['firstName']}}</td>
-      <td>{{p['lastName']}}</td>
-      <td>{{p['mailAddress']}}</td>
-      <td>{{p['postal_code']}}</td>
-      <td>{{p['house_number']}}</td>
-      <td><button class="emptyButton btn " (click)="selectedAccount = p; checkThis(); edit.show(); "><i class="fas fa-edit emptyButton blue"></i></button></td>
-      <td><button class="emptyButton btn " (click)="selectedAccount = p; sure.show()"><i class="far fa-times-circle emptyButton red"></i></button></td>
+    <tr mdbTableCol *ngFor="let a of accounts; let i = index">
+      <td>{{a.firstName}}</td>
+      <td>{{a.lastName}}</td>
+      <td>{{a.mailAddress}}</td>
+      <td>{{a.postalCode}}</td>
+      <td>{{a.houseNumber}}</td>
+      <td><button class="emptyButton" (click)="selectedAccount = a; edit.show(); "><i class="fas fa-edit emptyButton color-blue"></i></button></td>
+      <td><button class="emptyButton" (click)="selectedAccount = a; sure.show()"><i class="far fa-times-circle emptyButton color-red"></i></button></td>
     </tr>
     </tbody>
   </table>
@@ -54,7 +54,7 @@
         <div class="modal-body" >
           <label style="display: block">
             First Name:
-            <input class="form-control" type="text" value="{{selectedAccount?.firstName}} " [(ngModel)]="selectedAccount.firstName">
+            <input class="form-control" type="text" value="{{selectedAccount.firstName}}" [(ngModel)]="selectedAccount.firstName">
           </label>
           <label style="display: block">
             Last Name:

@@ -12,35 +12,39 @@ import {Router} from '@angular/router';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
-  account: Account = new Account('','','','','', '', '');
-  ValidationBooleans =  {
+  account: Account = new Account('', '', '', '', '', '', '');
+  ValidationBooleans = {
     password: false,
-    mailAddress: false
+    mailAddress: false,
+    error: false
   };
-  constructor(private readonly accountService: AccountService, private readonly router: Router) { }
+
+  constructor(private readonly accountService: AccountService, private readonly router: Router) {
+  }
 
   onsubmit() {
-    const account = {
-      mailAddress: this.account.mailAddress,
-      firstName: this.account.firstName,
-      password: this.account.password,
-      lastName: this.account.lastName,
-      postalCode: this.account.postalCode,
-      houseNumber: this.account.houseNumber
-    };
+    const account = this.accountService.getRequestObject(this.account);
     this.accountService.post(account).subscribe(data => {
-        this.router.navigate(['/login'], { queryParams: { email: account.mailAddress } });
+        this.router.navigate(['/login'], {queryParams: {email: account.mailAddress}});
       },
       error => {
+        debugger;
         const err: HttpErrorResponse = error as HttpErrorResponse;
-        Validator.ClassifyBackendResponse(err.error.errors.toString()).forEach((value) => {
-          if (value === 'password') {
-            this.ValidationBooleans.password = true;
-          }
-          if (value === 'mailAddress') {
-            this.ValidationBooleans.mailAddress = true;
-          }
-        });
+        try {
+          Validator.ClassifyBackendResponse(err.error.errors.toString()).forEach((value) => {
+            if (value === 'password') {
+              this.ValidationBooleans.password = true;
+            }
+            if (value === 'mailAddress') {
+              this.ValidationBooleans.mailAddress = true;
+            }
+          });
+        } catch (e) {
+          // ignore
+        }
+        if (!(this.ValidationBooleans.password || this.ValidationBooleans.mailAddress)) {
+          this.ValidationBooleans.error = true;
+        }
       });
-    }
   }
+}

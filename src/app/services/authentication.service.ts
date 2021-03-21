@@ -14,7 +14,7 @@ import {SessionState} from '../model/SessionState.model';
 export class AuthenticationService {
   private _loggedIn = false;
   private _lastActivity: Date;
-  private _accountId = 0;
+  private _accountId = '';
   private _account: Account;
 
   loggedInStatusChanged = new Subject<boolean>();
@@ -86,7 +86,7 @@ export class AuthenticationService {
   getAccountFromServer() {
     return this.http.get<Account>(environment.apiUrl + 'api/account').subscribe(data => {
       this._account = data;
-       if (this._account.groups[0]) {
+      if (this._account.groups[0]) {
          this.roleChanged.next(this._account.groups[0].name);
        }
     });
@@ -116,7 +116,7 @@ export class AuthenticationService {
     this.http.delete(environment.apiUrl + 'api/authentication').subscribe();
     this._loggedIn = false;
     this._lastActivity = null;
-    this._accountId = 0;
+    this._accountId = '';
     this.loggedInStatusChanged.next(false);
     this.roleChanged.next('none');
   }

@@ -3,10 +3,10 @@
 export class SessionState{
   private _valid: boolean;
   private _lastActivity: Date;
-  private _accountId: number;
+  private _accountId: string;
 
 
-  constructor(valid: boolean, lastActivity: string, accountId: number) {
+  constructor(valid: boolean, lastActivity: string, accountId: string) {
     this._valid = valid;
     this._lastActivity = new Date(lastActivity);
     this._accountId = accountId;
@@ -21,7 +21,7 @@ export class SessionState{
     return this._lastActivity;
   }
 
-  get accountId(): number {
+  get accountId(): string {
     return this._accountId;
   }
 

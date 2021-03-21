@@ -52,11 +52,9 @@ export class ShoppingCartComponent implements OnInit {
       this.getQuantity();
     });
   }
-  getSubSubTotal(product: Product) {
-    return (product.quantity * product.price).toFixed(2);
-  }
-  deleteAll() {
-    this.shoppingCartService.deleteAll().subscribe(data => {
+
+  order() {
+    this.shoppingCartService.order().subscribe(data => {
       this.shoppingCartService.changeEmitter.emit(true);
       this.router.navigate(['']);
     });

@@ -15,11 +15,13 @@ export class ProductViewComponent implements OnInit {
   @Input() product: Product = null;
   @Input() image: string;
   @Input() thumbnail: boolean;
+  @Input() shoppingCartActive = true;
   constructor(private readonly route: ActivatedRoute,
               private readonly router: Router,
               private readonly imageService: ImageService,
               private readonly shoppingCartService: ShoppingCartService) {
   }
+
   ngOnInit() {
     if (this.thumbnail === undefined) { this.thumbnail = false; }
     this.imageService.createImageFromBlob(this.imageService.convertFromBase64(this.image.split(',')[1]));

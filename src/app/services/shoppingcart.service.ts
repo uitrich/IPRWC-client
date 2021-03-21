@@ -38,4 +38,7 @@ export class ShoppingCartService {
     this.changeEmitter.emit(true);
     return this.httpClient.post( environment.apiUrl + 'api/shoppingcart/' + id, '');
   }
+  order() {
+    return this.httpClient.post(environment.apiUrl + 'api/shoppingcart/order', '');
+  }
 }

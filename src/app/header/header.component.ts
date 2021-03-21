@@ -28,7 +28,6 @@ export class HeaderComponent implements OnInit {
 
     this.roleChangedSub = this.authenticationService.roleChanged.subscribe((newRole) => {
       this.admin = newRole === 'Admin';
-      console.log(newRole === 'Admin', newRole);
     });
     this.shoppingCartService.changeEmitter.subscribe(value => {
       this.shoppingCartService.get().subscribe(data => {

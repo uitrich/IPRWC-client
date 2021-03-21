@@ -11,7 +11,9 @@ import {CategoryService} from '../../services/category.service';
 import {BodyLocationService} from '../../services/bodyLocation.service';
 import {Category} from '../../model/Category.model';
 import {element} from 'protractor';
-import {MDBModalRef} from 'angular-bootstrap-md';
+import {MDBModalRef, MDBModalService} from 'angular-bootstrap-md';
+import {mod} from 'ngx-bootstrap/chronos/utils';
+import {ModalBackdropOptions} from 'ngx-bootstrap';
 
 @Component({
   selector: 'app-product-manager',
@@ -29,11 +31,10 @@ export class ProductManagerComponent implements OnInit {
   newProduct: Product = new Product('', 0.00, new BodyLocation(0, ''), new Category(0, ''), new Company(0, ''), 0, '');
   selectedProduct = new Product('', 0.00, new BodyLocation(0, ''), new Category(0, ''), new Company(0, ''), 0, '');
 
-  newProductName: string;
-  oldImage: string;
+  oldProduct: Product = new Product('','','','','',0,'');
   newImage: string;
   imageHasChanged: boolean;
-  private message: any;
+
   constructor(private readonly productService: ProductService,
               private readonly companyService: CompanyService,
               private readonly categoryService: CategoryService,
@@ -69,7 +70,6 @@ export class ProductManagerComponent implements OnInit {
   }
 
   remove(id: number) {
-    console.log(id);
     this.productService.delete(id).subscribe(data => {
       document.getElementById(id.toString()).remove();
     });
@@ -81,22 +81,27 @@ export class ProductManagerComponent implements OnInit {
 
   onFileChangesNew(event: any) {
     const image: string = event[0].base64;
-    this.oldImage = this.newProduct.image;
     this.newProduct.image = image;
     this.imageHasChanged = true;
   }
 
   onFileChanges(event: any) {
     const image: string = event[0].base64;
-    this.oldImage = this.selectedProduct.image;
+    this.oldProduct.image = this.selectedProduct.image;
     this.selectedProduct.image = image;
     this.imageHasChanged = true;
   }
   onUpdateClose() {
-    this.selectedProduct.image = this.oldImage;
+    this.productService.get(this.selectedProduct.id).subscribe(data => {
+      this.selectedProduct.name = data.name;
+      this.selectedProduct.bodyLocation = data.bodyLocation;
+      this.selectedProduct.company = data.company;
+      this.selectedProduct.category = data.category;
+      this.selectedProduct.price = data.price;
+      this.selectedProduct.image = data.image;
+    });
   }
-  onNewClose() {
-    this.newProduct.image = null;
+  onUpdateOpen() {
   }
 
   post(modal: MDBModalRef) {

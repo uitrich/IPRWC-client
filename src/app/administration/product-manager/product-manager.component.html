@@ -1,9 +1,8 @@
-<div *ngIf="loaded">
-  <div class="input-group mb-3">
-    <input type="text" class="form-control" placeholder="Voeg product toe" aria-label="Voeg tag toe" aria-describedby="basic-addon2" [(ngModel)]="newProduct.name">
-    <div class="input-group-append">
-      <button class="btn btn-outline-secondary" type="button" (click)="add.show()">+</button>
-    </div>
+<div *ngIf="loaded" class="container-fluid">
+  <h1 class="title">Product Management environment</h1>
+  <div class="input-group big-group">
+    <input type="text" class="form-control" placeholder="Add new Product" aria-label="Add new Product" aria-describedby="basic-addon2" [(ngModel)]="newProduct.name">
+    <input class="form-submitted btn-outline-primary btn-addition" type="button" (click)="add.show();" value="+">
   </div>
 
   <table class="table">
@@ -29,8 +28,8 @@
       <td>{{p.company?.name}}</td>
       <td>{{p.price.toFixed(2)}}</td>
       <td class="tableImage"><app-product-view [thumbnail]="true" [image]="p.image" [product]="p"></app-product-view></td>
-      <td><button class="emptyButton btn " (click)="selectedProduct = p; edit.show()"><i class="fas fa-edit emptyButton blue"></i></button></td>
-      <td><button class="emptyButton btn " (click)="selectedProduct = p; sure.show()"><i class="far fa-times-circle emptyButton red"></i></button></td>
+      <td><button class="emptyButton" (click)="selectedProduct = p; edit.show(); onUpdateOpen();"><i class="fas fa-edit emptyButton color-blue"></i></button></td>
+      <td><button class="emptyButton" (click)="selectedProduct = p; sure.show()"><i class="far fa-times-circle emptyButton color-red"></i></button></td>
     </tr>
     </tbody>
   </table>
@@ -57,20 +56,17 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close pull-right" aria-label="Close" (click)="edit.hide()">
-            <span aria-hidden="true">×</span>
-          </button>
-          <h4 class="modal-title w-100" id="myModalLabel">Editing: </h4>
+          <h4 class="modal-title w-100" >Editing: </h4>
           <h4> {{selectedProduct.name}}</h4>
         </div>
         <div class="modal-body" >
           <label style="display: block">
             Id:
-            <input disabled class="form-control" type="number" value="{{selectedProduct?.id}}">
+            <input disabled class="form-control" type="number" [value]="selectedProduct?.id">
           </label>
           <label style="display: block">
             Name:
-            <input class="form-control" type="text" value="{{selectedProduct?.name}} " [(ngModel)]="selectedProduct.name">
+            <input class="form-control" type="text" [value]="selectedProduct.name" [(ngModel)]="selectedProduct.name">
           </label>
           <label style="display: block">
             Category:
@@ -105,13 +101,10 @@
     </div>
   </div>
 
-  <div mdbModal #add="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+  <div mdbModal #add="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true" >
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close pull-right" aria-label="Close" (click)="add.hide()">
-            <span aria-hidden="true">×</span>
-          </button>
           <h4 class="modal-title">Updating: {{newProduct.name}}</h4>
           <h4> </h4>
         </div>

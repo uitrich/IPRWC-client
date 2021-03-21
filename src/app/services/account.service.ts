@@ -13,7 +13,7 @@ import {encode} from 'punycode';
 export class AccountService {
   constructor(private httpClient: HttpClient) {}
 
-  getAll() { return this.httpClient.get<Object[]>(environment.apiUrl + 'api/account/admin'); }
+  getAll() { return this.httpClient.get<Account[]>(environment.apiUrl + 'api/account/admin'); }
 
   get(mailAdress: string) {
     return this.httpClient.get<Account>(environment.apiUrl + 'api/account/admin/' + encodeURI(mailAdress));
@@ -23,11 +23,22 @@ export class AccountService {
     return this.httpClient.post(environment.apiUrl + 'api/account/makeAccount', account);
   }
 
-  put(account: Account) {
+  put(account: object) {
     return this.httpClient.put(environment.apiUrl + 'api/account/admin/update', account);
   }
 
   delete(mailAdress: string) {
-    return this.httpClient.delete(environment.apiUrl + 'api/account/admin/delete/' + encode(mailAdress));
+    return this.httpClient.delete(environment.apiUrl + 'api/account/admin/delete/' + encodeURI(mailAdress));
+  }
+
+  getRequestObject(account: Account) {
+    return{
+      mailAddress: account.mailAddress,
+      firstName: account.firstName,
+      password: account.password,
+      lastName: account.lastName,
+      postalCode: account.postalCode,
+      houseNumber: account.houseNumber
+    };
   }
 }

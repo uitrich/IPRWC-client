@@ -32,7 +32,6 @@ export class ProductService {
   }
 
   delete(id: number) {
-    console.log('delete' + id);
     return this.httpClient.delete(environment.apiUrl + 'api/product/' + id);
   }
 
@@ -61,7 +60,6 @@ export class ProductService {
       id: product.id,
       image: product.image,
     };
-    console.log(object);
     return object;
   }
   toNewObject(product: Product) {

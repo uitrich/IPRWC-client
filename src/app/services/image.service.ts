@@ -9,7 +9,6 @@ export class ImageService {
   createImageFromBlob(image: Blob) {
     const reader = new FileReader();
     reader.addEventListener('load', () => {
-      console.log('image found');
       return reader.result;
     }, false);
 

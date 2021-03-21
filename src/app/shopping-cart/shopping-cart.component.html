@@ -10,7 +10,7 @@
   <tr mdbTableCol *ngFor="let p of products; let i = index">
     <td><app-product-view [product]="p" [image]="p.image" [thumbnail]="true"></app-product-view></td>
     <td> <a routerLink="/product/{{p.id}}"><h5 class="text-truncate-size">{{p ? p?.name : null}}</h5></a></td>
-    <td><input type="number" value="{{quantities[i]}}" (input)="updateQuantity(p.id, i, $event)" min="1" max="100"/></td>
+    <td><input type="number" [(ngModel)]="quantities[i]" (input)="updateQuantity(p.id, i, $event)"/></td>
     <td>{{p.price.toFixed(2)}}</td>
     <td><button class="btn btn-outline-danger" (click)="remove(p.id)">remove</button></td>
     <td>$ {{(p.quantity * p.price).toFixed(2)}}</td>
@@ -25,18 +25,18 @@
   </tr>
   </tbody>
 </table>
-  <button class="wide btn btn-outline-primary" *ngIf="products.length > 0" (click)="order.show()">Order Products</button>
+  <button class="wide btn btn-outline-primary" *ngIf="products?.length > 0" (click)="orderConfirmation.show()">Order Products</button>
 
 </div>
-<div mdbModal #order="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+<div mdbModal #orderConfirmation="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h4 class="modal-title w-100" id="myModalLabel">Are you sure you want to Order these products: </h4>
       </div>
       <p *ngFor="let p of products">{{p.name}}</p>
-      <a class="btn btn-outline-success" (click)="this.deleteAll()">yes</a>
-      <a class="btn btn-outline-danger" (click)="order.hide()" >no</a>
+      <a class="btn btn-outline-success" (click)="this.order()">yes</a>
+      <a class="btn btn-outline-danger" (click)="orderConfirmation.hide()" >no</a>
     </div>
   </div>
 </div>

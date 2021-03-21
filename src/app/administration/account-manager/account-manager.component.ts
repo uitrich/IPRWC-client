@@ -11,7 +11,7 @@ import {MDBModalRef} from 'angular-bootstrap-md';
 })
 export class AccountManagerComponent implements OnInit {
   loaded = false;
-  accounts: object[] = [];
+  accounts: Account[] = [];
   newAccount = new Account('', '' , '', '', '', '', '' );
   selectedAccount = new Account('', '' , '', '', '', '', '' );
   constructor(private readonly accountService: AccountService) { }
@@ -24,18 +24,13 @@ export class AccountManagerComponent implements OnInit {
   }
 
   remove(sure: MDBModalRef) {
-    this.accountService.delete(this.selectedAccount.mailAddress).subscribe(data => sure.hide());
-    this.accountService.getAll().subscribe(data => this.accounts = data);
+    this.accountService.delete(this.selectedAccount.mailAddress).subscribe(data => {
+      sure.hide();
+      this.accounts = this.accounts.filter(obj => obj !== this.selectedAccount);
+    });
   }
 
   update(edit: any) {
-    this.accountService.put(this.selectedAccount).subscribe(data => edit.hide());
-  }
-
-  post(add: any) {
-    this.accountService.post(this.newAccount).subscribe(data => add.hide());
-  }
-  checkThis() {
-    console.log(this);
+    this.accountService.put(this.accountService.getRequestObject(this.selectedAccount)).subscribe(data => edit.hide());
   }
 }

@@ -4,6 +4,7 @@ import {ProductService} from '../services/product.service';
 import {Product} from '../model/Product.model';
 import {ImageService} from '../services/image.service';
 import {ShoppingCartService} from '../services/shoppingcart.service';
+import {AuthenticationService} from '../services/authentication.service';
 
 @Component({
   selector: 'app-product-detail-view',
@@ -14,9 +15,11 @@ export class ProductDetailViewComponent implements OnInit {
   productId: number;
   product: Product;
   image: string;
+  loggedIn: boolean
   constructor(private readonly route: ActivatedRoute,
               private readonly productService: ProductService,
               private readonly shoppingCartService: ShoppingCartService,
+              private readonly authenticationService: AuthenticationService,
               private readonly router: Router,
               private readonly imageService: ImageService) { }
 
@@ -33,6 +36,7 @@ export class ProductDetailViewComponent implements OnInit {
         this.imageService.createImageFromBlob(this.imageService.convertFromBase64(this.image.split(',')[1]));
       });
     });
+    this.loggedIn = this.authenticationService.loggedIn;
   }
 
   addToShoppingCart(id: number) {

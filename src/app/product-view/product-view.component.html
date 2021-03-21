@@ -13,7 +13,17 @@
       <div class="col-6"><img class="img-thumbnail" src="{{image}}" alt="Card image cap"></div>
 
     </div>
-    <div class="card-footer"> <button class="btn btn-outline-primary" (click)="addToShoppingCart(product ? product.id : null)"><i class="fas fa-shopping-cart"></i> Add to shopping cart</button></div>
+    <div class="card-footer">
+      <button *ngIf="shoppingCartActive else notLoggedIn" class="btn btn-outline-primary" (click)="addToShoppingCart(product ? product.id : null)">
+        <i class="fas fa-shopping-cart"></i>
+        Add to shopping cart
+      </button></div>
+      <ng-template #notLoggedIn>
+        <a class="btn btn-outline-primary shopping-cart-button" routerLink="/login">
+          <i class="fas fa-shopping-cart"></i>
+          Log in
+        </a>
+      </ng-template>
   </div>
 </div>
 

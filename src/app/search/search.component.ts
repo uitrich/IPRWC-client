@@ -3,6 +3,7 @@ import {HttpService} from '../services/http.service';
 import {ActivatedRoute} from '@angular/router';
 import {Product} from '../model/Product.model';
 import {ProductService} from '../services/product.service';
+import {AuthenticationService} from '../services/authentication.service';
 
 
 @Component({
@@ -22,7 +23,11 @@ export class SearchComponent implements OnInit {
   message: number;
   headerValue: number | string;
   searchCompany = false;
-  constructor(private readonly httpService: HttpService, private readonly route: ActivatedRoute, private productService: ProductService) {
+  loggedIn: boolean;
+  constructor(private readonly httpService: HttpService,
+              private readonly route: ActivatedRoute,
+              private readonly productService: ProductService,
+              private readonly authenticationService: AuthenticationService) {
   }
 
   receiveMessage($event) {
@@ -31,6 +36,10 @@ export class SearchComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loggedIn = this.authenticationService.accountId !== '';
+    this.authenticationService.loggedInStatusChanged.subscribe((status) => {
+      this.loggedIn = status;
+    });
     this.route.queryParams.subscribe(params => {
       this.category = params['category'];
       this.bodyLocation = params['bodylocation'];
