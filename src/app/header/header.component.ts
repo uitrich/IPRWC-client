@@ -24,6 +24,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     this.loggedInSub = this.authenticationService.loggedInStatusChanged.subscribe((status) => {
       this.loggedIn = status;
+      this.getQuantity();
     });
 
     this.roleChangedSub = this.authenticationService.roleChanged.subscribe((newRole) => {
@@ -34,7 +35,6 @@ export class HeaderComponent implements OnInit {
         this.getQuantity();
       });
     });
-    this.getQuantity();
   }
   getQuantity() {
     this.shoppingCartService.get().subscribe(data => {
