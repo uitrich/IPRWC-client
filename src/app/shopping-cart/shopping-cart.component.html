@@ -34,9 +34,16 @@
       <div class="modal-header">
         <h4 class="modal-title w-100" id="myModalLabel">Are you sure you want to Order these products: </h4>
       </div>
-      <p *ngFor="let p of products">{{p.name}}</p>
-      <a class="btn btn-outline-success" (click)="this.order()">yes</a>
-      <a class="btn btn-outline-danger" (click)="orderConfirmation.hide()" >no</a>
+      <div *ngFor="let p of products" class="row" >
+        <img class="small-thumb col-2" [src]="p.image">
+        <p  class="text-primary col-10">{{p.name}}</p>
+      </div>
+
+
+      <div class="row confirmations">
+        <a class="btn btn-outline-success col-6" (click)="this.order()">yes</a>
+        <a class="btn btn-outline-danger col-6" (click)="orderConfirmation.hide()" >no</a>
+      </div>
     </div>
   </div>
 </div>
