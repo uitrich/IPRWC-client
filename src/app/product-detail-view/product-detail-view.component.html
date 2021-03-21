@@ -24,7 +24,7 @@
         </table>
     </div>
     <div class="card-footer">
-      <button *ngIf="loggedIn else notLoggedIn" class="btn btn-outline-primary" (click)="addToShoppingCart(product?.id)">
+      <button *ngIf="loggedIn else notLoggedIn" class="btn btn-outline-primary shopping-cart-button" (click)="addToShoppingCart(product?.id)">
         <i class="fas fa-shopping-cart"></i>
         Add to shopping cart
       </button>
