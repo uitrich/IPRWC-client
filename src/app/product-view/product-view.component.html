@@ -14,7 +14,7 @@
 
     </div>
     <div class="card-footer">
-      <button *ngIf="shoppingCartActive else notLoggedIn" class="btn btn-outline-primary" (click)="addToShoppingCart(product ? product.id : null)">
+      <button *ngIf="shoppingCartActive else notLoggedIn" class="btn btn-outline-primary shopping-cart-button" (click)="addToShoppingCart(product ? product.id : null)">
         <i class="fas fa-shopping-cart"></i>
         Add to shopping cart
       </button></div>
