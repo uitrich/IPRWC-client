@@ -113,11 +113,12 @@ export class AuthenticationService {
   }
 
   logout() {
-    this.http.delete(environment.apiUrl + 'api/authentication').subscribe();
-    this._loggedIn = false;
-    this._lastActivity = null;
-    this._accountId = '';
-    this.loggedInStatusChanged.next(false);
-    this.roleChanged.next('none');
+    this.http.delete(environment.apiUrl + 'api/authentication').subscribe(data => {
+      this._loggedIn = false;
+      this._lastActivity = null;
+      this._accountId = '';
+      this.loggedInStatusChanged.next(false);
+      this.roleChanged.next('none');
+    });
   }
 }

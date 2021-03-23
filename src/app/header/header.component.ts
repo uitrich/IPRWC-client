@@ -24,7 +24,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     this.loggedInSub = this.authenticationService.loggedInStatusChanged.subscribe((status) => {
       this.loggedIn = status;
-      this.getQuantity();
+      if (status) { this.getQuantity(); }
     });
 
     this.roleChangedSub = this.authenticationService.roleChanged.subscribe((newRole) => {
