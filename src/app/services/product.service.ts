@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core';
-import {HttpService} from './http.service';
 import {Product} from '../model/Product.model';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {environment} from '../../environments/environment';
@@ -20,11 +19,11 @@ export class ProductService {
   }
 
   getTop(featuredAmount) {
-    return this.httpClient.get<Product[]>('api/product/top/' + 3)
+    return this.httpClient.get<Product[]>('api/product/top/' + featuredAmount);
   }
 
   post(product: Product) {
-    return this.httpClient.post<Product>(environment.apiUrl + 'api/product', this.toNewObject(product));
+    return this.httpClient.post<Product>(environment.apiUrl + 'api/product', this.toObject(product));
   }
 
   put(product: Product) {
@@ -51,7 +50,7 @@ export class ProductService {
   }
 
   toObject(product: Product) {
-    let object = {
+    return {
       name: product.name,
       price: product.price,
       bodyLocation: product.bodyLocation,
@@ -59,17 +58,6 @@ export class ProductService {
       company: product.company,
       id: product.id,
       image: product.image,
-    };
-    return object;
-  }
-  toNewObject(product: Product) {
-    return {
-      name: product.name,
-      price: product.price,
-      bodyLocation: {id: product.bodyLocation.id, name: product.bodyLocation.name},
-      category: {id: product.category.id, name: product.category.name},
-      company: {id: product.company.id, name: product.company.name},
-      image: product.image
     };
   }
 }

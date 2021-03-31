@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import {HttpService} from '../services/http.service';
+import {Component} from '@angular/core';
 import {Account} from '../model/Account.model';
 import {AccountService} from '../services/account.service';
 import {HttpErrorResponse} from '@angular/common/http';
@@ -28,7 +27,6 @@ export class RegisterComponent {
         this.router.navigate(['/login'], {queryParams: {email: account.mailAddress}});
       },
       error => {
-        debugger;
         const err: HttpErrorResponse = error as HttpErrorResponse;
         try {
           Validator.ClassifyBackendResponse(err.error.errors.toString()).forEach((value) => {

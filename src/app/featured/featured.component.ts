@@ -1,8 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {HttpService} from '../services/http.service';
+import {Component, OnInit} from '@angular/core';
 import {Product} from '../model/Product.model';
-import {ActivatedRoute} from '@angular/router';
 import {AuthenticationService} from '../services/authentication.service';
+import {ProductService} from '../services/product.service';
 
 @Component({
   selector: 'app-featured',
@@ -14,7 +13,7 @@ export class FeaturedComponent implements OnInit {
   length: number;
   loggedIn: boolean;
 
-  constructor(private readonly httpService: HttpService, private readonly authenticationService: AuthenticationService) {
+  constructor(private readonly productService: ProductService, private readonly authenticationService: AuthenticationService) {
   }
 
   ngOnInit() {
@@ -25,7 +24,7 @@ export class FeaturedComponent implements OnInit {
     this.getProducts();
   }
   getProducts() {
-    this.httpService.makeGetRequest('api/product/top/' + 3).subscribe(data => {
+    this.productService.getTop(3).subscribe(data => {
         this.products = data as Product[];
       }
     );

@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AccountService} from '../../services/account.service';
-import {Product} from '../../model/Product.model';
 import {Account} from '../../model/Account.model';
 import {MDBModalRef} from 'angular-bootstrap-md';
 

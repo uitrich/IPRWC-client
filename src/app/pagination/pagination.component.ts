@@ -1,7 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {HttpService} from '../services/http.service';
-import {environment} from '../../environments/environment';
-import {Product} from '../model/Product.model';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'app-pagination',

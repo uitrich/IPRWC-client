@@ -1,5 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {HttpService} from '../services/http.service';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Product} from '../model/Product.model';
 import {ProductService} from '../services/product.service';
@@ -24,7 +23,7 @@ export class SearchComponent implements OnInit {
   headerValue: number | string;
   searchCompany = false;
   loggedIn: boolean;
-  constructor(private readonly httpService: HttpService,
+  constructor(
               private readonly route: ActivatedRoute,
               private readonly productService: ProductService,
               private readonly authenticationService: AuthenticationService) {
@@ -49,6 +48,7 @@ export class SearchComponent implements OnInit {
       this.getProducts(1);
     });
   }
+
   getProducts(page: number) {
     this.images = [];
     this.productService.search(page, this.search, this.category, this.company, this.bodyLocation).subscribe(data => {

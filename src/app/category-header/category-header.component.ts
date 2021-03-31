@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import {HttpService} from '../services/http.service';
+import {Component} from '@angular/core';
 import {Router} from '@angular/router';
 
 @Component({

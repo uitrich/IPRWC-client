@@ -1,19 +1,13 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {BodyLocation} from '../../model/BodyLocation.model';
-import {Account} from '../../model/Account.model';
 import {Company} from '../../model/Company.model';
 import {ProductService} from '../../services/product.service';
 import {Product} from '../../model/Product.model';
-import {tap} from 'rxjs/operators';
-import {HttpService} from '../../services/http.service';
 import {CompanyService} from '../../services/company.service';
 import {CategoryService} from '../../services/category.service';
 import {BodyLocationService} from '../../services/bodyLocation.service';
 import {Category} from '../../model/Category.model';
-import {element} from 'protractor';
-import {MDBModalRef, MDBModalService} from 'angular-bootstrap-md';
-import {mod} from 'ngx-bootstrap/chronos/utils';
-import {ModalBackdropOptions} from 'ngx-bootstrap';
+import {MDBModalRef} from 'angular-bootstrap-md';
 
 @Component({
   selector: 'app-product-manager',

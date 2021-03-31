@@ -1,8 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {HttpService} from '../services/http.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Product} from '../model/Product.model';
-import {environment} from '../../environments/environment';
 import {ImageService} from '../services/image.service';
 import {ShoppingCartService} from '../services/shoppingcart.service';
 

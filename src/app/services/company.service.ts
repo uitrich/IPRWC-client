@@ -1,6 +1,4 @@
 import {Injectable} from '@angular/core';
-import {HttpService} from './http.service';
-import {Product} from '../model/Product.model';
 import {Company} from '../model/Company.model';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
@@ -11,7 +9,7 @@ import {environment} from '../../environments/environment';
 export class CompanyService {
   constructor(private httpClient: HttpClient) {}
 
-  getAll() { return this.httpClient.get<Company[]>(environment.apiUrl + 'api/company')}
+  getAll() { return this.httpClient.get<Company[]>(environment.apiUrl + 'api/company'); }
 
   get(id: number) {
     return this.httpClient.get<Company>(environment.apiUrl + 'api/company/' + id);

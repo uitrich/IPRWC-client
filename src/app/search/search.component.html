@@ -7,7 +7,8 @@
   <h3 *ngIf="products.length <= 0">Nothing was found</h3>
   <div class="row">
     <div *ngFor="let p of products; let i = index" class="col-lg-3 col-sm-12 col-md-4">
-      <app-product-view *ngIf="p!= undefined && p != null" [product]="p" [image]="images[i]" [shoppingCartActive]="loggedIn"></app-product-view>
+      <app-product-view *ngIf="p!= undefined && p != null" [product]="p" [image]="images[i]" [shoppingCartActive]="loggedIn">
+      </app-product-view>
     </div>
   </div>
   <app-pagination [length]="this.length" (messageEvent)="receiveMessage($event)">

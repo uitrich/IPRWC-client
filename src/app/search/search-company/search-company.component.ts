@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {HttpService} from '../../services/http.service';
+import {Component, OnInit} from '@angular/core';
 import {Company} from '../../model/Company.model';
 import {Router} from '@angular/router';
+import {CompanyService} from '../../services/company.service';
 
 @Component({
   selector: 'app-search-company',
@@ -10,12 +10,11 @@ import {Router} from '@angular/router';
 })
 export class SearchCompanyComponent implements OnInit {
   companies: Company[];
-  splitCompanies: Company[][];
 
-  constructor(private readonly httpService: HttpService, private readonly router: Router) { }
+  constructor(private readonly companyService: CompanyService, private readonly router: Router) { }
 
   ngOnInit() {
-    this.httpService.makeGetRequest('api/company').subscribe(data => {
+    this.companyService.getAll().subscribe(data => {
       this.companies = data as Company[];
     });
   }

@@ -1,12 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {NgForm} from '@angular/forms';
-import {HttpService} from '../services/http.service';
-import {HttpErrorResponse} from '@angular/common/http';
-import {environment} from '../../environments/environment';
-import {catchError} from 'rxjs/operators';
+import {Component, OnInit} from '@angular/core';
 import {AuthenticationService} from '../services/authentication.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {error} from 'util';
 
 @Component({
   selector: 'app-login',

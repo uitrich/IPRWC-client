@@ -1,7 +1,4 @@
 import {EventEmitter, Injectable} from '@angular/core';
-import {HttpService} from './http.service';
-import {Product} from '../model/Product.model';
-import {Company} from '../model/Company.model';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 
