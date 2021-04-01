@@ -19,7 +19,7 @@ export class ProductService {
   }
 
   getTop(featuredAmount) {
-    return this.httpClient.get<Product[]>('api/product/top/' + featuredAmount);
+    return this.httpClient.get<Product[]>(environment.apiUrl + 'api/product/top/' + featuredAmount);
   }
 
   post(product: Product) {
